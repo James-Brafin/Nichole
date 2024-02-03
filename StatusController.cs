@@ -12,7 +12,7 @@ namespace JamesBrafin.Nichole
     {
 
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Begin))]
+        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Hit))]
         private static void DoEnflame(AAttack __instance, G g, State s, Combat c)
         {
             Ship ship = (__instance.targetPlayer ? c.otherShip : s.ship);
@@ -26,6 +26,22 @@ namespace JamesBrafin.Nichole
             });
         }
 
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Hit))]
+        private static void DoCryo(AAttack __instance, G g, State s, Combat c)
+        {
+            Ship ship = (__instance.targetPlayer ? c.otherShip : s.ship);
+            if (ship.Get((Status)MainManifest.statuses["Cryo"].Id) <= 0) return;
+
+            c.QueueImmediate(new AHurt
+            {
+                targetPlayer != __instance.targetPlayer,
+                hurtAmount = ship.Get((Status)MainManifest.statuses["Cryo"].Id)
+            });
+
+            ClearStatus(ship, (Status)MainManifest.statuses["cryo"].Id);
+        }
+
         public static void ClearStatus(Ship ship, Status status)
         {
             var stacks = ship.Get(status);
@@ -34,9 +50,16 @@ namespace JamesBrafin.Nichole
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(Ship), nameof(Ship.OnBeginTurn))]
-        public static void HarmonyPostfix_VowOfCourage_Cleanup(Ship __instance, State s, Combat c)
+        public static void HarmonyPostfix_Enflame_Cleanup(Ship __instance, State s, Combat c)
         {
             ClearStatus(__instance, (Status)MainManifest.statuses["enflame"].Id);
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(Ship), nameof(Ship.OnBeginTurn))]
+        public static void HarmonyPostfix_Cryo_Cleanup(Ship __instance, State s, Combat c)
+        {
+            ClearStatus(__instance, (Status)MainManifest.statuses["cryo"].Id);
         }
     }
 }
