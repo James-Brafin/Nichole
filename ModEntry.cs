@@ -1,5 +1,4 @@
-﻿using JamesBrafin.Nichole.Artifacts;
-using JamesBrafin.Nichole.Cards;
+﻿using JamesBrafin.Nichole.Cards;
 using HarmonyLib;
 using Microsoft.Extensions.Logging;
 using Nanoray.PluginManager;
@@ -9,29 +8,24 @@ using System.Collections.Generic;
 using System.Linq;
 using JamesBrafin.Nichole.Cards.Potions;
 
-/* In the Cobalt Core modding community it is common for namespaces to be <Author>.<ModName>
- * This is helpful to know at a glance what mod we're looking at, and who made it */
+
 namespace JamesBrafin.Nichole;
 
-/* ModEntry is the base for our mod. Others like to name it Manifest, and some like to name it <ModName>
- * Notice the ': SimpleMod'. This means ModEntry is a subclass (child) of the superclass SimpleMod (parent). This is help us use Nickel's functions more easily! */
 public sealed class ModEntry : SimpleMod
 {
     internal static ModEntry Instance { get; private set; } = null!;
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
+    internal IStatusEntry Enflame { get; }
+    internal IStatusEntry Cryo { get; }
+    internal IDeckEntry Potion_Deck { get; }
 
     internal static IReadOnlyList<Type> Potion_CommonCard_Types { get; } = [
-        typeof(AlchemistFire)
+        typeof(AlchemistFire),
+        typeof(FreezerBomb),
+        typeof(SwiftnessPotion),
+        typeof(ExtraReagents)
     ];
-
-    public void LoadManifest(IStatusRegistry statusRegistry)
-    {
-        var enflame = new ExternalStatus("JamesBrafin.Nichole.Statuses.Enflame", true, System.Drawing.Color.Red, null, sprites["assets/statuses/heatAdd.png"], false);
-        statusRegistry.RegisterStatus(enflame);
-        redraw.AddLocalisation("Enflame", "Your attacks apply {0} heat until end of turn.");
-        statuses["enflame"] = enflame;
-    }
 
     public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
     {
@@ -45,8 +39,32 @@ public sealed class ModEntry : SimpleMod
             new CurrentLocaleOrEnglishLocalizationProvider<IReadOnlyList<string>>(this.AnyLocalizations)
         );
 
-        Potion_Default_CardBackground = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/potion/potion_default_background.png"));
-        Potion_CardFrame = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/potion/potion_cardframe.png"));
+        Enflame = Helper.Content.Statuses.RegisterStatus("TempShieldNextTurn", new()
+        {
+            Definition = new()
+            {
+                icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/heatAdd.png")).Sprite,
+                color = new("b500be"),
+                isGood = true
+            },
+            Name = this.AnyLocalizations.Bind(["status", "Enflame", "name"]).Localize,
+            Description = this.AnyLocalizations.Bind(["status", "Enflame", "description"]).Localize
+        });
+
+        Cryo = Helper.Content.Statuses.RegisterStatus("Cryo", new()
+        {
+            Definition = new()
+            {
+                icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/cryo.png")).Sprite,
+                color = new("b500be"),
+                isGood = true
+            },
+            Name = this.AnyLocalizations.Bind(["status", "Cryo", "name"]).Localize,
+            Description = this.AnyLocalizations.Bind(["status", "Cryo", "description"]).Localize
+        });
+
+        var Potion_Default_CardBackground = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/potion/potion_default_background.png")).Sprite;
+        var Potion_CardFrame = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/potion/potion_cardframe.png")).Sprite;
 
         /* Decks are assigned separate of the character. This is because the game has decks like Trash which is not related to a playable character
          * Do note that Color accepts a HEX string format (like Color("a1b2c3")) or a Float RGB format (like Color(0.63, 0.7, 0.76). It does NOT allow a traditional RGB format (Meaning Color(161, 178, 195) will NOT work) */
@@ -71,8 +89,4 @@ public sealed class ModEntry : SimpleMod
             Name = this.AnyLocalizations.Bind(["character", "DemoCharacter", "name"]).Localize,
         });
     }
-
-    foreach (var cardType in DemoMod_AllCard_Types)
-            AccessTools.DeclaredMethod(cardType, nameof(IDemoCard.Register))?.Invoke(null, [helper]);
-
 }

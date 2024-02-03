@@ -4,11 +4,11 @@ using System.Reflection;
 
 namespace JamesBrafin.Nichole.Cards.Potions;
 
-internal sealed class AlchemistFire : Card, PotionCard
+internal sealed class SwiftnessPotion : Card, PotionCard
 {
     public static void Register(IModHelper helper)
     {
-        helper.Content.Cards.RegisterCard("AlchemistFire", new()
+        helper.Content.Cards.RegisterCard("SwiftnessPotion", new()
         {
             CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
             Meta = new()
@@ -17,7 +17,7 @@ internal sealed class AlchemistFire : Card, PotionCard
                 rarity = Rarity.common,
                 upgradesTo = [Upgrade.A, Upgrade.B]
             },
-            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "AlchemistFire", "name"]).Localize
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SwiftnessPotion", "name"]).Localize
         });
     }
 
@@ -29,8 +29,8 @@ internal sealed class AlchemistFire : Card, PotionCard
             cost = 0,
             temporary = true,
             exhaust = true,
-            singleuse = true,
-            art = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/potion_alchemistfire_background.png"))
+            singleUse = true,
+            flippable = upgrade == Upgrade.B
 
     /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
 };
@@ -48,10 +48,9 @@ internal sealed class AlchemistFire : Card, PotionCard
                 {
                     new AStatus()
                     {
-                        status = (Status)MainManifest.statuses["enflame"].Id,
-                        statusAmount = 1,
-                        targetPlayer = true,
-                        mode = Enum.Parse<AStatusMode>("Add")
+                        status = Status.evade,
+                        statusAmount = 2,
+                        targetPlayer = true
                     }
                 };
                 actions = cardActionList1;
@@ -61,15 +60,9 @@ internal sealed class AlchemistFire : Card, PotionCard
                 {
                     new AStatus()
                     {
-                        status = (Status)MainManifest.statuses["enflame"].Id,
-                        statusAmount = 1,
-                        targetPlayer = true,
-                        mode = Enum.Parse<AStatusMode>("Add")
-                    },
-
-                    new AAttack()
-                    {
-                        damage = GetDmg(s, 1)
+                        status = Status.evade,
+                        statusAmount = 3,
+                        targetPlayer = true
                     }
                 };
                 actions = cardActionList2;
@@ -79,10 +72,16 @@ internal sealed class AlchemistFire : Card, PotionCard
                 {
                     new AStatus()
                     {
-                        status = (Status)MainManifest.statuses["enflame"].Id,
-                        statusAmount = 2,
+                        status = Status.evade,
+                        statusAmount = 1,
+                        targetPlayer = true
+                    },
+
+                    new
+                    AMove()
+                    {
+                        dir = 2,
                         targetPlayer = true,
-                        mode = Enum.Parse<AStatusMode>("Add")
                     }
                 };
                 actions = cardActionList3;

@@ -4,20 +4,20 @@ using System.Reflection;
 
 namespace JamesBrafin.Nichole.Cards.Potions;
 
-internal sealed class ExtraReagents : Card, PotionCard
+internal sealed class EnergyDrink : Card, PotionCard
 {
     public static void Register(IModHelper helper)
     {
-        helper.Content.Cards.RegisterCard("ExtraReagents", new()
+        helper.Content.Cards.RegisterCard("EnergyDrink", new()
         {
             CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
             Meta = new()
             {
                 deck = ModEntry.Instance.Potion_Deck.Deck,
-                rarity = Rarity.common,
+                rarity = Rarity.uncommon,
                 upgradesTo = [Upgrade.A, Upgrade.B]
             },
-            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ExtraReagents", "name"]).Localize
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "EnergyDrink", "name"]).Localize
         });
     }
 
@@ -30,8 +30,6 @@ internal sealed class ExtraReagents : Card, PotionCard
             temporary = true,
             exhaust = true,
             singleUse = true
-
-    /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
 };
         return data;
     }
@@ -45,9 +43,9 @@ internal sealed class ExtraReagents : Card, PotionCard
             case Upgrade.None:
                 List<CardAction> cardActionList1 = new List<CardAction>()
                 {
-                    new ADrawCard()
+                    new AEnergy()
                     {
-                        count = 2
+                        changeAmount = 1
                     }
                 };
                 actions = cardActionList1;
@@ -55,22 +53,26 @@ internal sealed class ExtraReagents : Card, PotionCard
             case Upgrade.A:
                 List<CardAction> cardActionList2 = new List<CardAction>()
                 {
-                    new AStatus()
+                    new AEnergy()
                     {
-                        status = Status.drawNextTurn,
-                        statusAmount = 2,
-                        targetPlayer = true
+                        changeAmount = 1
                     },
 
+                    new AStatus()
+                    {
+                        status = Status.energyNextTurn,
+                        statusAmount = 1,
+                        targetPlayer = true,
+                    }
                 };
                 actions = cardActionList2;
                 break;
             case Upgrade.B:
                 List<CardAction> cardActionList3 = new List<CardAction>()
                 {
-                    new ADrawCard()
+                    new AEnergy()
                     {
-                        count = 3
+                        changeAmount = 2
                     }
                 };
                 actions = cardActionList3;

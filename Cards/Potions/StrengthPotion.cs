@@ -4,20 +4,20 @@ using System.Reflection;
 
 namespace JamesBrafin.Nichole.Cards.Potions;
 
-internal sealed class ExtraReagents : Card, PotionCard
+internal sealed class StrengthPotion : Card, PotionCard
 {
     public static void Register(IModHelper helper)
     {
-        helper.Content.Cards.RegisterCard("ExtraReagents", new()
+        helper.Content.Cards.RegisterCard("StrengthPotion", new()
         {
             CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
             Meta = new()
             {
                 deck = ModEntry.Instance.Potion_Deck.Deck,
-                rarity = Rarity.common,
+                rarity = Rarity.uncommon,
                 upgradesTo = [Upgrade.A, Upgrade.B]
             },
-            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ExtraReagents", "name"]).Localize
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "StrengthPotion", "name"]).Localize
         });
     }
 
@@ -29,9 +29,8 @@ internal sealed class ExtraReagents : Card, PotionCard
             cost = 0,
             temporary = true,
             exhaust = true,
-            singleUse = true
+            singleUse = true,
 
-    /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
 };
         return data;
     }
@@ -45,9 +44,11 @@ internal sealed class ExtraReagents : Card, PotionCard
             case Upgrade.None:
                 List<CardAction> cardActionList1 = new List<CardAction>()
                 {
-                    new ADrawCard()
+                    new AStatus()
                     {
-                        count = 2
+                        status = Status.overdrive,
+                        statusAmount = 1,
+                        targetPlayer = true
                     }
                 };
                 actions = cardActionList1;
@@ -57,20 +58,26 @@ internal sealed class ExtraReagents : Card, PotionCard
                 {
                     new AStatus()
                     {
-                        status = Status.drawNextTurn,
+                        status = Status.overdrive,
                         statusAmount = 2,
                         targetPlayer = true
-                    },
-
+                    }
                 };
                 actions = cardActionList2;
                 break;
             case Upgrade.B:
                 List<CardAction> cardActionList3 = new List<CardAction>()
                 {
-                    new ADrawCard()
+                    new AStatus()
                     {
-                        count = 3
+                        status = Status.overdrive,
+                        statusAmount = 1,
+                        targetPlayer = true
+                    },
+
+                    new AAttack()
+                    {
+                        damage = GetDmg(s, 2)
                     }
                 };
                 actions = cardActionList3;
