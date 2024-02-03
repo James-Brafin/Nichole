@@ -12,22 +12,33 @@ namespace JamesBrafin.Nichole
     {
 
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Hit))]
+        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Begin))]
         private static void DoEnflame(AAttack __instance, G g, State s, Combat c)
         {
-            Ship ship = (__instance.targetPlayer ? c.otherShip : s.ship);
-            if (ship.Get((Status)MainManifest.statuses["enflame"].Id) <= 0) return;
+            Ship attacker = (__instance.targetPlayer ? s.ship : c.otherShip);
+            Ship defender = (__instance.targetPlayer ? c.otherShip : s.ship);
+            if (attacker.Get((Status)MainManifest.statuses["enflame"].Id) <= 0) return;
 
-            c.QueueImmediate(new AStatus
+            foreach(var part in attacker)
             {
-                targetPlayer = !__instance.targetPlayer,
-                status = Status.Heat,
-                statusAmount = ship.Get((Status)MainManifest.statuses["enflame"].Id)
-            });
+                if(part.type == PType.cannon)
+                {
+                    Part partAtWorldX = defender.GetPartAtWorldX(num);
+                    if (partAtWorldX.type != PType.empty)
+                    {
+                        c.QueueImmediate(new AStatus
+                        {
+                            targetPlayer = !__instance.targetPlayer,
+                            status = Status.Heat,
+                            statusAmount = attacker.Get((Status)MainManifest.statuses["enflame"].Id)
+                        });
+                    }
+                }
+            }
         }
 
         [HarmonyPostfix]
-        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Hit))]
+        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Begin))]
         private static void DoCryo(AAttack __instance, G g, State s, Combat c)
         {
             Ship ship = (__instance.targetPlayer ? c.otherShip : s.ship);
