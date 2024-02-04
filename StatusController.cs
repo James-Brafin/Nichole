@@ -21,6 +21,7 @@ namespace JamesBrafin.Nichole
             {
                 return;
             }
+            if (source.Get(ModEntry.Instance.Enflame.Status) <= 0) return;
 
             int? num = __instance.fromX;
             RaycastResult? raycastResult;
@@ -40,9 +41,119 @@ namespace JamesBrafin.Nichole
                 c.QueueImmediate(new AStatus()
                 {
                     status = Status.heat,
+                    statusAmount = source.Get(ModEntry.Instance.Enflame.Status),
                     targetPlayer = __instance.targetPlayer,
                     omitFromTooltips = true,
                 });
+            }
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Begin))]
+        private static void DoAcidTip(AAttack __instance, G g, State s, Combat c)
+        {
+            Ship target = (__instance.targetPlayer ? s.ship : c.otherShip);
+            Ship source = (__instance.targetPlayer ? c.otherShip : s.ship);
+            if (target == null || source == null || target.hull <= 0 || (__instance.fromDroneX.HasValue && !c.stuff.ContainsKey(__instance.fromDroneX.Value)))
+            {
+                return;
+            }
+            if (source.Get(ModEntry.Instance.AcidTip.Status) <= 0) return;
+
+            int? num = __instance.fromX;
+            RaycastResult? raycastResult;
+            if (__instance.fromDroneX.HasValue)
+            {
+                raycastResult = ((RaycastResult?)CombatUtils.RaycastGlobal(c, target, fromDrone: true, __instance.fromDroneX.Value));
+            }
+            else
+            {
+                raycastResult = ((num.HasValue ? CombatUtils.RaycastFromShipLocal(s, c, num.Value, __instance.targetPlayer) : null));
+            }
+            bool flag = true;
+            if (target.Get(Status.autododgeLeft) > 0 || target.Get(Status.autododgeRight) > 0)
+                flag = false;
+            if (raycastResult != null && raycastResult.hitShip && flag)
+            {
+                c.QueueImmediate(new AStatus()
+                {
+                    status = Status.corrode,
+                    statusAmount= source.Get(ModEntry.Instance.AcidTip.Status),
+                    targetPlayer = __instance.targetPlayer,
+                    omitFromTooltips = true,
+                });
+            }
+
+            ClearStatus(source, ModEntry.Instance.AcidTip.Status);
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Begin))]
+        private static void DoAcidSource(AAttack __instance, G g, State s, Combat c)
+        {
+            Ship target = (__instance.targetPlayer ? s.ship : c.otherShip);
+            Ship source = (__instance.targetPlayer ? c.otherShip : s.ship);
+            if (target == null || source == null || target.hull <= 0 || (__instance.fromDroneX.HasValue && !c.stuff.ContainsKey(__instance.fromDroneX.Value)))
+            {
+                return;
+            }
+            if (source.Get(ModEntry.Instance.AcidSource.Status) <= 0) return;
+
+            int? num = __instance.fromX;
+            RaycastResult? raycastResult;
+            if (__instance.fromDroneX.HasValue)
+            {
+                raycastResult = ((RaycastResult?)CombatUtils.RaycastGlobal(c, target, fromDrone: true, __instance.fromDroneX.Value));
+            }
+            else
+            {
+                raycastResult = ((num.HasValue ? CombatUtils.RaycastFromShipLocal(s, c, num.Value, __instance.targetPlayer) : null));
+            }
+            bool flag = true;
+            if (target.Get(Status.autododgeLeft) > 0 || target.Get(Status.autododgeRight) > 0)
+                flag = false;
+            if (raycastResult != null && raycastResult.hitShip && flag)
+            {
+                c.QueueImmediate(new AStatus()
+                {
+                    status = Status.corrode,
+                    statusAmount = source.Get(ModEntry.Instance.AcidSource.Status),
+                    targetPlayer = __instance.targetPlayer,
+                    omitFromTooltips = true,
+                });
+            }
+
+            ClearStatus(source, ModEntry.Instance.AcidTip.Status);
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Begin))]
+        private static void DoSuperStun(AAttack __instance, G g, State s, Combat c)
+        {
+            Ship target = (__instance.targetPlayer ? s.ship : c.otherShip);
+            Ship source = (__instance.targetPlayer ? c.otherShip : s.ship);
+            if (target == null || source == null || target.hull <= 0 || (__instance.fromDroneX.HasValue && !c.stuff.ContainsKey(__instance.fromDroneX.Value)))
+            {
+                return;
+            }
+            if (source.Get(ModEntry.Instance.SuperStun.Status) <= 0) return;
+
+            int? num = __instance.fromX;
+            RaycastResult? raycastResult;
+            if (__instance.fromDroneX.HasValue)
+            {
+                raycastResult = ((RaycastResult?)CombatUtils.RaycastGlobal(c, target, fromDrone: true, __instance.fromDroneX.Value));
+            }
+            else
+            {
+                raycastResult = ((num.HasValue ? CombatUtils.RaycastFromShipLocal(s, c, num.Value, __instance.targetPlayer) : null));
+            }
+            bool flag = true;
+            if (target.Get(Status.autododgeLeft) > 0 || target.Get(Status.autododgeRight) > 0)
+                flag = false;
+            if (raycastResult != null && raycastResult.hitShip && flag)
+            {
+                __instance.stunEnemy = true;
             }
         }
 
@@ -67,16 +178,13 @@ namespace JamesBrafin.Nichole
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(Ship), nameof(Ship.OnBeginTurn))]
-        public static void HarmonyPostfix_Enflame_Cleanup(Ship __instance, State s, Combat c)
+        public static void HarmonyPostfix_Status_Cleanup(Ship __instance, State s, Combat c)
         {
             ClearStatus(__instance, ModEntry.Instance.Enflame.Status);
-        }
-
-        [HarmonyPostfix]
-        [HarmonyPatch(typeof(Ship), nameof(Ship.OnBeginTurn))]
-        public static void HarmonyPostfix_Cryo_Cleanup(Ship __instance, State s, Combat c)
-        {
             ClearStatus(__instance, ModEntry.Instance.Cryo.Status);
+            ClearStatus(__instance, ModEntry.Instance.AcidTip.Status);
+            ClearStatus(__instance, ModEntry.Instance.AcidSource.Status);
+            ClearStatus(__instance, ModEntry.Instance.SuperStun.Status);
         }
     }
 }

@@ -1,24 +1,23 @@
 ﻿using Nickel;
-using JamesBrafin.Nichole.Actions;
 using System.Collections.Generic;
 using System.Reflection;
 
 namespace JamesBrafin.Nichole.Cards.Potions;
 
-internal sealed class SightPotion : Card, PotionCard
+internal sealed class ConfusionDraught : Card, PotionCard
 {
     public static void Register(IModHelper helper)
     {
-        helper.Content.Cards.RegisterCard("SightPotion", new()
+        helper.Content.Cards.RegisterCard("ConfusionDraught", new()
         {
             CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
             Meta = new()
             {
                 deck = ModEntry.Instance.Potion_Deck.Deck,
-                rarity = Rarity.uncommon,
+                rarity = Rarity.rare,
                 upgradesTo = [Upgrade.A, Upgrade.B]
-            },
-            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "SightPotion", "name"]).Localize
+            },ConfusionDraught
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ConfusionDraught", "name"]).Localize
         });
     }
 
@@ -30,8 +29,9 @@ internal sealed class SightPotion : Card, PotionCard
             cost = 0,
             temporary = true,
             exhaust = true,
-            singleUse = true,
+            singleUse = true
 
+    /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
 };
         return data;
     }
@@ -45,13 +45,11 @@ internal sealed class SightPotion : Card, PotionCard
             case Upgrade.None:
                 List<CardAction> cardActionList1 = new List<CardAction>()
                 {
-                    new AScry()
+                    new AStatus()
                     {
-                        amount = 2
-                    },
-                    new AScry()
-                    {
-                        amount = 2
+                        status = Status.backwardsMissiles,
+                        statusAmount = 1,
+                        targetPlayer = false
                     }
                 };
                 actions = cardActionList1;
@@ -59,13 +57,16 @@ internal sealed class SightPotion : Card, PotionCard
             case Upgrade.A:
                 List<CardAction> cardActionList2 = new List<CardAction>()
                 {
-                    new AScry()
+                    new AStatus()
                     {
-                        amount = 3
+                        status = Status.backwardsMissiles,
+                        statusAmount = 1,
+                        targetPlayer = true,
                     },
-                    new AScry()
+
+                    new ADrawCard()
                     {
-                        amount = 3
+                        count = 1
                     }
                 };
                 actions = cardActionList2;
@@ -73,17 +74,11 @@ internal sealed class SightPotion : Card, PotionCard
             case Upgrade.B:
                 List<CardAction> cardActionList3 = new List<CardAction>()
                 {
-                    new AScry()
+                    new AStatus()
                     {
-                        amount = 2
-                    },
-                    new AScry()
-                    {
-                        amount = 2
-                    },
-                    new AScry()
-                    {
-                        amount = 2
+                        status = Status.boost,
+                        statusAmount = 2,
+                        targetPlayer = true
                     }
                 };
                 actions = cardActionList3;

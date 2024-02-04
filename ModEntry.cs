@@ -18,6 +18,9 @@ public sealed class ModEntry : SimpleMod
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
     internal IStatusEntry Enflame { get; }
     internal IStatusEntry Cryo { get; }
+    internal IStatusEntry AcidTip { get; }
+    internal IStatusEntry AcidSource { get; }
+    internal IStatusEntry SuperStun { get; }
     internal IDeckEntry Potion_Deck { get; }
 
     internal static IReadOnlyList<Type> Potion_CommonCard_Types { get; } = [
@@ -26,6 +29,25 @@ public sealed class ModEntry : SimpleMod
         typeof(SwiftnessPotion),
         typeof(ExtraReagents)
     ];
+
+    internal static IReadOnlyList<Type> Potion_UnommonCard_Types { get; } = [
+        typeof(EnergyDrink),
+        typeof(SightPotion),
+        typeof(StrengthPotion),
+        typeof(WrathPotion)
+    ];
+
+    internal static IReadOnlyList<Type> Potion_RareCard_Types { get; } = [
+        typeof(AcidCoating),
+        typeof(ConfusionDraught),
+        typeof(ShockWater),
+        typeof(PotionBooster)
+    ];
+
+    internal static IEnumerable<Type> Potion_AllCard_Types
+        => Potion_CommonCard_Types
+        .Concat(Potion_UnommonCard_Types)
+        .Concat(Potion_RareCard_Types);
 
     public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
     {
@@ -39,7 +61,7 @@ public sealed class ModEntry : SimpleMod
             new CurrentLocaleOrEnglishLocalizationProvider<IReadOnlyList<string>>(this.AnyLocalizations)
         );
 
-        Enflame = Helper.Content.Statuses.RegisterStatus("TempShieldNextTurn", new()
+        Enflame = Helper.Content.Statuses.RegisterStatus("Enflame", new()
         {
             Definition = new()
             {
@@ -61,6 +83,42 @@ public sealed class ModEntry : SimpleMod
             },
             Name = this.AnyLocalizations.Bind(["status", "Cryo", "name"]).Localize,
             Description = this.AnyLocalizations.Bind(["status", "Cryo", "description"]).Localize
+        });
+
+        AcidTip = Helper.Content.Statuses.RegisterStatus("AcidTip", new()
+        {
+            Definition = new()
+            {
+                icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/AcidTip.png")).Sprite,
+                color = new("b500be"),
+                isGood = true
+            },
+            Name = this.AnyLocalizations.Bind(["status", "AcidTip", "name"]).Localize,
+            Description = this.AnyLocalizations.Bind(["status", "AcidTip", "description"]).Localize
+        });
+
+        AcidSource = Helper.Content.Statuses.RegisterStatus("AcidSource", new()
+        {
+            Definition = new()
+            {
+                icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/AcidSource.png")).Sprite,
+                color = new("b500be"),
+                isGood = true
+            },
+            Name = this.AnyLocalizations.Bind(["status", "AcidSource", "name"]).Localize,
+            Description = this.AnyLocalizations.Bind(["status", "AcidSource", "description"]).Localize
+        });
+
+        SuperStun = Helper.Content.Statuses.RegisterStatus("SuperStun", new()
+        {
+            Definition = new()
+            {
+                icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/SuperStun.png")).Sprite,
+                color = new("b500be"),
+                isGood = true
+            },
+            Name = this.AnyLocalizations.Bind(["status", "SuperStun", "name"]).Localize,
+            Description = this.AnyLocalizations.Bind(["status", "SuperStun", "description"]).Localize
         });
 
         var Potion_Default_CardBackground = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/potion/potion_default_background.png")).Sprite;
@@ -86,7 +144,7 @@ public sealed class ModEntry : SimpleMod
             BorderSprite = Potion_CardFrame,
 
             /* Since this deck will be used by our Demo Character, we'll use their name. */
-            Name = this.AnyLocalizations.Bind(["character", "DemoCharacter", "name"]).Localize,
+            Name = this.AnyLocalizations.Bind(["character", "Potions", "name"]).Localize,
         });
     }
 }
