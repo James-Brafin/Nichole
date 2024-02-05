@@ -21,8 +21,7 @@ namespace JamesBrafin.Nichole.Actions
             timer = 0.0;
             return new ScryHandler
             {
-                amount = amount,
-                canSkip = false
+                amount = amount
             };
         }
 

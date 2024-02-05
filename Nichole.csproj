@@ -16,6 +16,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Nickel.ModBuildConfig" Version="0.4.0" />
+    <PackageReference Include="MakeTypesPublic" Version="1.0.3" PrivateAssets="All" ExcludeAssets="runtime" />
 	</ItemGroup>
 	<ItemGroup>
 		<Project Include="Configuration.props.user" Condition="Exists('Configuration.props.user')" />

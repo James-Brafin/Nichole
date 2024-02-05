@@ -15,11 +15,7 @@ namespace JamesBrafin.Nichole
 
     public int amount;
 
-    public bool canSkip = true;
-
     public double? takeCardAnimation;
-
-    public CardUpgrade? ugpradePreview;
 
     public float upgradeChance;
 
@@ -98,24 +94,10 @@ namespace JamesBrafin.Nichole
 
     public override void Render(G g)
     {
-        if (ugpradePreview != null)
-        {
-            ugpradePreview.Render(g);
-            return;
-        }
-
         if (cards.Count == 0)
         {
             g.CloseRoute(this);
             return;
-        }
-
-        foreach (Artifact item in g.state.EnumerateAllArtifacts())
-        {
-            if (item.StopPlayerFromSkippingCardRewards())
-            {
-                canSkip = false;
-            }
         }
 
         if (takeCardAnimation.HasValue)
@@ -171,50 +153,6 @@ namespace JamesBrafin.Nichole
         Color? color = Colors.textMain;
         TAlign? align = TAlign.Center;
         Draw.Text(str, 240.0, 44.0, stapler, color, null, null, null, align);
-        string text;
-        if (PlatformIcons.GetPlatform() == Platform.MouseKeyboard)
-        {
-            text = Loc.T("cardReward.howToPreviewUpgrade");
-        }
-        else
-        {
-            string text2 = PlatformIcons.GetPlatform() switch
-            {
-                Platform.Xbox => Loc.T("controller.xbox.xMuted"),
-                Platform.NX => Loc.T("controller.nx.x"),
-                Platform.PS => Loc.T("controller.ps.square"),
-                _ => Loc.T("controller.xbox.xMuted"),
-            };
-            text = Loc.T("cardReward.howToPreviewUpgrade.controller", true, text2);
-        }
-
-        string str2 = text;
-        Color? color2 = Colors.textMain.gain(0.5);
-        align = TAlign.Center;
-        double? maxWidth = 300.0;
-        Draw.Text(str2, 240.0, 69.0, null, color2, null, null, maxWidth, align);
-        if (canSkip && !takeCardAnimation.HasValue)
-        {
-            Vec localV = new Vec(210.0, 205.0);
-            UIKey key = UK.cardReward_skip;
-            string text3 = Loc.T("uiShared.btnSkipRewards");
-            OnMouseDown? onMouseDown = ((flourishTimer > 0.7) ? this : null);
-            Color? boxColor = Colors.textMain.gain(0.5);
-            SharedArt.ButtonText(g, localV, key, text3, null, boxColor, inactive: false, onMouseDown, null, null, null, null, autoFocus: false, showAsPressed: false, gamepadUntargetable: false, hasDownState: false, null, null, null, null, 0, 60.0);
-        }
-
-        if (!canSkip)
-        {
-            Rect? rect = new Rect(240.0, 205.0);
-            Vec xy = g.Push(null, rect).rect.xy;
-            string str3 = Loc.T("cardReward.preventedSkip");
-            double x = xy.x;
-            double y = xy.y;
-            Color? color3 = Colors.textMain.gain(0.5);
-            align = TAlign.Center;
-            Draw.Text(str3, x, y, null, color3, null, null, null, align);
-            g.Pop();
-        }
 
         foreach (Card card3 in cards)
         {
@@ -227,12 +165,6 @@ namespace JamesBrafin.Nichole
 
     public override bool TryCloseSubRoute(G g, Route r, object? arg)
     {
-        if (r == ugpradePreview)
-        {
-            ugpradePreview = null;
-            return true;
-        }
-
         return false;
     }
 }

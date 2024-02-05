@@ -16,7 +16,7 @@ internal sealed class ConfusionDraught : Card, PotionCard
                 deck = ModEntry.Instance.Potion_Deck.Deck,
                 rarity = Rarity.rare,
                 upgradesTo = [Upgrade.A, Upgrade.B]
-            },ConfusionDraught
+            },
             Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ConfusionDraught", "name"]).Localize
         });
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
+using static CardBrowse;
 
 namespace JamesBrafin.Nichole
 {
@@ -168,6 +169,21 @@ namespace JamesBrafin.Nichole
             __instance.damage = baseDamage + ship.Get(ModEntry.Instance.Cryo.Status);
 
             ClearStatus(ship, ModEntry.Instance.Cryo.Status);
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(Combat), nameof(Combat.TryPlayCard))]
+        private static void savePotion(Combat __instance, State s, Card c, bool playNoMatterWhatForFree, bool exhaustNoMatterWhat)
+        {
+            if(c.GetMeta().deck == ModEntry.Instance.Potion_Deck.Deck && !exhaustNoMatterWhat)
+            {
+                Card newCard = c.CopyWithNewId();
+                __instance.QueueImmediate(new AAddCard()
+                {
+                    card = newCard,
+                    destination = CardDestination.Discard
+                 });
+            }
         }
 
         public static void ClearStatus(Ship ship, Status status)

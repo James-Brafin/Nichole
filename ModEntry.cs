@@ -21,7 +21,9 @@ public sealed class ModEntry : SimpleMod
     internal IStatusEntry AcidTip { get; }
     internal IStatusEntry AcidSource { get; }
     internal IStatusEntry SuperStun { get; }
+    internal IStatusEntry PotionSaver { get; }
     internal IDeckEntry Potion_Deck { get; }
+    internal IDeckEntry Nichole_Deck { get; }
 
     internal static IReadOnlyList<Type> Potion_CommonCard_Types { get; } = [
         typeof(AlchemistFire),
@@ -121,6 +123,18 @@ public sealed class ModEntry : SimpleMod
             Description = this.AnyLocalizations.Bind(["status", "SuperStun", "description"]).Localize
         });
 
+        PotionSaver = Helper.Content.Statuses.RegisterStatus("PotionSaver", new()
+        {
+            Definition = new()
+            {
+                icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/PotionSaver.png")).Sprite,
+                color = new("b500be"),
+                isGood = true
+            },
+            Name = this.AnyLocalizations.Bind(["status", "PotionSaver", "name"]).Localize,
+            Description = this.AnyLocalizations.Bind(["status", "PotionSaver", "description"]).Localize
+        });
+
         var Potion_Default_CardBackground = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/potion/potion_default_background.png")).Sprite;
         var Potion_CardFrame = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/potion/potion_cardframe.png")).Sprite;
 
@@ -145,6 +159,27 @@ public sealed class ModEntry : SimpleMod
 
             /* Since this deck will be used by our Demo Character, we'll use their name. */
             Name = this.AnyLocalizations.Bind(["character", "Potions", "name"]).Localize,
+        });
+
+        Nichole_Deck = Helper.Content.Decks.RegisterDeck("NicholeDeck", new DeckConfiguration()
+        {
+            Definition = new DeckDef()
+            {
+                /* This color is used in various situations. 
+                 * It is used as the deck's rarity 'shine'
+                 * If a playable character uses this deck, the character Name will use this color
+                 * If a playable character uses this deck, the character mini panel will use this color */
+                color = new Color("cd6a00"),
+
+                /* This color is for the card name in-game
+                 * Make sure it has a good contrast against the CardFrame, and take rarity 'shine' into account as well */
+                titleColor = new Color("000000")
+            },
+            DefaultCardArt = Potion_Default_CardBackground,
+            BorderSprite = Potion_CardFrame,
+
+            /* Since this deck will be used by our Demo Character, we'll use their name. */
+            Name = this.AnyLocalizations.Bind(["character", "Nichole", "name"]).Localize,
         });
     }
 }
