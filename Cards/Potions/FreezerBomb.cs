@@ -17,7 +17,7 @@ internal sealed class FreezerBomb : Card, PotionCard
                 rarity = Rarity.common,
                 upgradesTo = [Upgrade.A, Upgrade.B]
             },
-            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "AlchemistFire", "name"]).Localize
+            Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "FreezerBomb", "name"]).Localize
         });
     }
 
@@ -49,7 +49,7 @@ internal sealed class FreezerBomb : Card, PotionCard
                     {
                         status = ModEntry.Instance.Cryo.Status,
                         statusAmount = 1,
-                        targetPlayer = true
+                        targetPlayer = false
                     }
                 };
                 actions = cardActionList1;
@@ -61,14 +61,14 @@ internal sealed class FreezerBomb : Card, PotionCard
                     {
                         status = ModEntry.Instance.Cryo.Status,
                         statusAmount = 1,
-                        targetPlayer = true
+                        targetPlayer = false
                     },
 
                     new AStatus()
                     {
                         status = Status.lockdown,
                         statusAmount = 1,
-                        targetPlayer = true
+                        targetPlayer = false
                     }
                 };
                 actions = cardActionList2;

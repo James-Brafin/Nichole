@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
+using Microsoft.Extensions.Logging;
 using static CardBrowse;
 
 namespace JamesBrafin.Nichole
@@ -24,7 +25,7 @@ namespace JamesBrafin.Nichole
             }
             if (source.Get(ModEntry.Instance.Enflame.Status) <= 0) return;
 
-            int? num = __instance.fromX;
+            int? num = __instance.GetFromX(s, c);
             RaycastResult? raycastResult;
             if (__instance.fromDroneX.HasValue)
             {
@@ -32,7 +33,7 @@ namespace JamesBrafin.Nichole
             }
             else
             {
-                raycastResult = ((num.HasValue ? CombatUtils.RaycastFromShipLocal(s, c, num.Value, __instance.targetPlayer) : null));
+                raycastResult = ((num.HasValue ? CombatUtils.RaycastFromShipLocal(s, c, num.Value, __instance.targetPlayer) : null)); 
             }
             bool flag = true;
             if (target.Get(Status.autododgeLeft) > 0 || target.Get(Status.autododgeRight) > 0)
@@ -61,7 +62,7 @@ namespace JamesBrafin.Nichole
             }
             if (source.Get(ModEntry.Instance.AcidTip.Status) <= 0) return;
 
-            int? num = __instance.fromX;
+            int? num = __instance.GetFromX(s, c);
             RaycastResult? raycastResult;
             if (__instance.fromDroneX.HasValue)
             {
@@ -100,7 +101,7 @@ namespace JamesBrafin.Nichole
             }
             if (source.Get(ModEntry.Instance.AcidSource.Status) <= 0) return;
 
-            int? num = __instance.fromX;
+            int? num = __instance.GetFromX(s, c);
             RaycastResult? raycastResult;
             if (__instance.fromDroneX.HasValue)
             {
@@ -139,7 +140,7 @@ namespace JamesBrafin.Nichole
             }
             if (source.Get(ModEntry.Instance.SuperStun.Status) <= 0) return;
 
-            int? num = __instance.fromX;
+            int? num = __instance.GetFromX(s, c);
             RaycastResult? raycastResult;
             if (__instance.fromDroneX.HasValue)
             {
@@ -158,11 +159,11 @@ namespace JamesBrafin.Nichole
             }
         }
 
-        [HarmonyPostfix]
+        [HarmonyPrefix]
         [HarmonyPatch(typeof(AAttack), nameof(AAttack.Begin))]
         private static void DoCryo(AAttack __instance, G g, State s, Combat c)
         {
-            Ship ship = (__instance.targetPlayer ? c.otherShip : s.ship);
+            Ship ship = (__instance.targetPlayer ? s.ship: c.otherShip);
             if (ship.Get(ModEntry.Instance.Cryo.Status) <= 0) return;
 
             var baseDamage = __instance.damage;
@@ -171,16 +172,16 @@ namespace JamesBrafin.Nichole
             ClearStatus(ship, ModEntry.Instance.Cryo.Status);
         }
 
-        [HarmonyPostfix]
+        [HarmonyPrefix]
         [HarmonyPatch(typeof(Combat), nameof(Combat.TryPlayCard))]
-        private static void savePotion(Combat __instance, State s, Card c, bool playNoMatterWhatForFree, bool exhaustNoMatterWhat)
+        private static void savePotion(Combat __instance, State s, Card card, bool playNoMatterWhatForFree, bool exhaustNoMatterWhat)
         {
             Ship ship = s.ship;
             if (ship.Get(ModEntry.Instance.PotionSaver.Status) <= 0) return;
 
-            if (c.GetMeta().deck == ModEntry.Instance.Potion_Deck.Deck && !exhaustNoMatterWhat)
+            if (card.GetMeta().deck == ModEntry.Instance.Potion_Deck.Deck && !exhaustNoMatterWhat)
             {
-                Card newCard = c.CopyWithNewId();
+                Card newCard = card.CopyWithNewId();
                 __instance.QueueImmediate(new AAddCard()
                 {
                     card = newCard,

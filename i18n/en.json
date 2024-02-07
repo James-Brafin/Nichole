@@ -4,7 +4,12 @@
             "name": "Acid Splash"
         },
         "ChemicalBooster": {
-            "name": "Chemical Booster"
+            "name": "Chemical Booster",
+            "description": {
+                "None": "Upgrade a <c=abf5ff>Potion</c> in your hand to a random side.",
+                "A": "Upgrade a <c=abf5ff>Potion</c> in your hand or deck to a random side.",
+                "B": "Upgrade a <c=abf5ff>Potion</c> in your hand to a side of your choice."
+            }
         },
         "DilutedDose": {
             "name": "Diluted Dose"
@@ -13,10 +18,20 @@
             "name": "Enemy Enhancement"
         },
         "ExactFormula": {
-            "name": "Exact Formula"
+            "name": "Exact Formula",
+            "description": {
+                "None": "Add an uncommon <c=abf5ff>Potion</c> card of your choice.",
+                "A": "Add an unommon <c=abf5ff>Potion</c> card of your choice.",
+                "B": "Add two uncommon <c=abf5ff>Potion</c> cards of your choice."
+            }
         },
         "FailedExperiment": {
-            "name": "Failed Experiment"
+            "name": "Failed Experiment",
+            "description": {
+                "None": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 2</c>.",
+                "A": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 4</c>.",
+                "B": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 2</c>."
+            }
         },
         "FranticSearch": {
             "name": "Frantic Search"
@@ -25,81 +40,118 @@
             "name": "Ignition Strike"
         },
         "ImprovedReagent": {
-            "name": "Improved Reagents"
+            "name": "Improved Reagents",
+            "description": {
+                "None": "<c=boldPink>Draft</c> an uncommon <c=abf5ff>Potion</c> card.",
+                "A": "<c=boldPink>Draft</c> an uncommon upgraded <c=abf5ff>Potion</c> card.",
+                "B": "<c=boldPink>Draft</c> 2 uncommon <c=abf5ff>Potion</c> cards."
+            }
         },
         "InfusedReagents": {
-            "name": "Infused Reagents"
+            "name": "Infused Reagents",
+            "description": {
+                "None": "<c=boldPink>Draft</c> a common <c=abf5ff>Potion</c> card.",
+                "A": "<c=boldPink>Draft</c> a common upgraded <c=abf5ff>Potion</c> card.",
+                "B": "<c=boldPink>Draft</c> 2 common <c=abf5ff>Potion</c> cards."
+            }
         },
         "PerfectReagent": {
-            "name": "Perfect Reagents"
+            "name": "Perfect Reagents",
+            "description": {
+                "None": "<c=boldPink>Draft</c> a rare <c=abf5ff>Potion</c> card.",
+                "A": "<c=boldPink>Draft</c> a rare upgraded <c=abf5ff>Potion</c> card.",
+                "B": "<c=boldPink>Draft</c> 2 rare <c=abf5ff>Potion</c> cards."
+            }
         },
         "PhilosophersStone": {
             "name": "Philosopher's Stone"
         },
         "PotionLob": {
-            "name": "Potion Lob"
-        },
-        "PotionPrep": {
-            "name": "Potion Prep"
-        },
-        "PowerupPotion": {
-            "name": "Power-up Potion"
-        },
+            "name": "Potion Lob",
+            "description": {
+                "None": "Play the top <c=abf5ff>Potion</c> from your deck. <c=hurt>Attack 1</c>.",
+                "A": "Play the top <c=abf5ff>Potion</c> from your deck. <c=hurt>Attack 1</c>.",
+                "B": "Play the top two <c=abf5ff>Potions</c> from your deck. <c=hurt>Attack 1</c>."
+                }
+            },
+            "PotionPrep": {
+                "name": "Potion Prep"
+            },
+            "PowerupPotion": {
+                "name": "Power-up Potion"
+            },
         "PreciseMix": {
-            "name": "Precise Mix"
+            "name": "Precise Mix",
+            "description": {
+                "None": "Add a common <c=abf5ff>Potion</c> card of your choice.",
+                "A": "Add a common <c=abf5ff>Potion</c> card of your choice.",
+                "B": "Add two common <c=abf5ff>Potion</c> cards of your choice."
+            }
         },
-        "RainbowStrike": {
-            "name": "Rainbow Strike"
-        },
+            "RainbowStrike": {
+                "name": "Rainbow Strike"
+            },
         "Rapid Toss": {
-            "name": "RapidToss"
+            "name": "RapidToss",
+            "description": {
+                "None": "Draw and play all <c=abf5ff>Potions</c> from your deck.",
+                "A": "Draw and play all <c=abf5ff>Potions</c> from your deck.",
+                "B": "Draw and play all <c=abf5ff>Potions</c> from your Deck and Discards."
+            }
         },
         "SkillSwap": {
-            "name": "Skill Swap"
+            "name": "Skill Swap",
+            "description": "Flip a <c=abf5ff>Potion's'</c> upgrade.",
+            }
         },
-        "SplitBatch": {
-            "name": "Split Batch"
-        },
-        "SuddenInspiration": {
-            "name": "Sudden Inspiration"
-        },
-        "AcidCoating": {
-            "name": "Acid Coating"
-        },
-        "AlchemistFire": {
-            "name": "Alchemist Fire"
-        },
-        "ConfusionDraught": {
-            "name": "Confusion Draught"
-        },
-        "EnergyDrink": {
-            "name": "Energy Drink"
-        },
-        "ExtraReagents": {
-            "name": "Extra Reagents"
-        },
-        "FreezerBomb": {
-            "name": "FreezerBomb"
-        },
-        "PotionBooster": {
-            "name": "Potion Booster"
-        },
-        "ShockWater": {
-            "name": "Shock Water"
-        },
-        "SightPotion": {
-            "name": "Seeing Salve"
-        },
-        "StrengthPotion": {
-            "name": "Draught of Power"
-        },
-        "SwiftnessPotion": {
-            "name": "Swiftfoot Salve"
-        },
-        "WrathPotion": {
-            "name": "Enraging Elixir"
+    "SplitBatch": {
+        "name": "Split Batch",
+        "description": {
+            "None": "Duplicate a <c=abf5ff>Potion</c> in your hand.",
+            "A": "Duplicate a <c=abf5ff>Potion</c> in your hand, draw pile, or discards.",
+            "B": "Duplicate a <c=abf5ff>Potion</c> in your hand twice."
         }
     },
+            "SuddenInspiration": {
+                "name": "Sudden Inspiration"
+            },
+            "AcidCoating": {
+                "name": "Acid Coating"
+            },
+            "AlchemistFire": {
+                "name": "Alchemist Fire"
+            },
+            "ConfusionDraught": {
+                "name": "Confusion Draught"
+            },
+            "EnergyDrink": {
+                "name": "Energy Drink"
+            },
+            "ExtraReagents": {
+                "name": "Extra Reagents"
+            },
+            "FreezerBomb": {
+                "name": "Freezer Bomb"
+            },
+            "PotionBooster": {
+                "name": "Potion Booster"
+            },
+            "ShockWater": {
+                "name": "Shock Water"
+            },
+            "SightPotion": {
+                "name": "Seeing Salve"
+            },
+            "StrengthPotion": {
+                "name": "Draught of Power"
+            },
+            "SwiftnessPotion": {
+                "name": "Swiftfoot Salve"
+            },
+            "WrathPotion": {
+                "name": "Enraging Elixir"
+            }
+        },
     "status": {
         "Enflame": {
             "name": "Enflame",
@@ -107,7 +159,7 @@
         },
         "Cryo": {
             "name": "Cryo",
-            "description": "The next hit deals {0} to this ship."
+            "description": "The next hit deals {0} additional damage to this ship."
         },
         "AcidTip": {
             "name": "Acid Tip",

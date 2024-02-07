@@ -25,7 +25,6 @@ public sealed class ModEntry : SimpleMod
     internal IStatusEntry PotionSaver { get; }
     internal IDeckEntry Potion_Deck { get; }
     internal IDeckEntry Nichole_Deck { get; }
-
     internal ISpriteEntry Nichole_Character_Panel {  get; }
     internal ISpriteEntry Nichole_Neutral_0 { get; }
     internal ISpriteEntry Nichole_Mini_0 { get; }
@@ -222,7 +221,7 @@ public sealed class ModEntry : SimpleMod
             Name = this.AnyLocalizations.Bind(["character", "Nichole", "name"]).Localize,
         });
 
-        Nichole_Character_Panel = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/Nichole_Small.png"));
+        Nichole_Character_Panel = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/nichole_panel.png"));
         Nichole_Neutral_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/neutral/Nichole_Neutral.png"));
         Nichole_Mini_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/Nichole_Small.png"));
         Nichole_Squint_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/neutral/Nichole_Squint.png"));
@@ -295,5 +294,8 @@ public sealed class ModEntry : SimpleMod
 
         foreach (var cardType in Nichole_AllCard_Types)
             AccessTools.DeclaredMethod(cardType, nameof(NicholeCard.Register))?.Invoke(null, [helper]);
+
+        var harmony = new Harmony("Nichole");
+        harmony.PatchAll();
     }
 }

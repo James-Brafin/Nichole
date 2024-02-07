@@ -32,7 +32,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
                 cost = upgrade == Upgrade.None ? 2: (upgrade == Upgrade.A ? 1 : 0),
-                exhaust = upgrade == Upgrade.B ? true : false
+                exhaust = upgrade == Upgrade.B ? true : false,
+                description = ModEntry.Instance.Localizations.Localize(["card", "SkillSwap", "description"])
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };

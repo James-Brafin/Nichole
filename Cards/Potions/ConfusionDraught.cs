@@ -61,7 +61,7 @@ internal sealed class ConfusionDraught : Card, PotionCard
                     {
                         status = Status.backwardsMissiles,
                         statusAmount = 1,
-                        targetPlayer = true,
+                        targetPlayer = false,
                     },
 
                     new ADrawCard()
@@ -76,9 +76,9 @@ internal sealed class ConfusionDraught : Card, PotionCard
                 {
                     new AStatus()
                     {
-                        status = Status.boost,
+                        status = Status.backwardsMissiles,
                         statusAmount = 2,
-                        targetPlayer = true
+                        targetPlayer = false
                     }
                 };
                 actions = cardActionList3;

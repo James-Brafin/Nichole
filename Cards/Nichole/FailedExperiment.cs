@@ -32,6 +32,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
                 cost = upgrade == Upgrade.B ? 0: 1,
+                description = ModEntry.Instance.Localizations.Localize(["card", "FailedExperiment", "description", upgrade.ToString()])
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };

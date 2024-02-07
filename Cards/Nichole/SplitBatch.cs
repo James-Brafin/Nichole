@@ -32,7 +32,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
                 cost = 1,
-                exhaust = true
+                exhaust = true,
+                description = ModEntry.Instance.Localizations.Localize(["card", "SplitBatch", "description", upgrade.ToString()])
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };

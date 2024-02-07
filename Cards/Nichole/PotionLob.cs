@@ -31,6 +31,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
                 cost = upgrade == Upgrade.A ? 0 : 1,
+                description = ModEntry.Instance.Localizations.Localize(["card", "PotionLob", "description", upgrade.ToString()])
+
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };
@@ -46,11 +48,12 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.None:
                     List<CardAction> cardActionList1 = new List<CardAction>()
                 {
+                    
                     new APotionLob()
                     {
 
                     },
-                    new AAttack()
+                    new AAttackNoIcon()
                     {
                         damage = GetDmg(s, 1)
                     }
@@ -64,7 +67,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
 
                     },
-                    new AAttack()
+                    new AAttackNoIcon()
                     {
                         damage = GetDmg(s, 1)
                     }
@@ -82,7 +85,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
 
                     },
-                    new AAttack()
+                    new AAttackNoIcon()
                     {
                         damage = GetDmg(s, 1)
                     }
