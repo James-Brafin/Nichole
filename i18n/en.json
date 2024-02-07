@@ -1,0 +1,140 @@
+{
+    "card": {
+        "AcidSplash": {
+            "name": "Acid Splash"
+        },
+        "ChemicalBooster": {
+            "name": "Chemical Booster"
+        },
+        "DilutedDose": {
+            "name": "Diluted Dose"
+        },
+        "Enemy Enhancement": {
+            "name": "Enemy Enhancement"
+        },
+        "ExactFormula": {
+            "name": "Exact Formula"
+        },
+        "FailedExperiment": {
+            "name": "Failed Experiment"
+        },
+        "FranticSearch": {
+            "name": "Frantic Search"
+        },
+        "IgnitionStrike": {
+            "name": "Ignition Strike"
+        },
+        "ImprovedReagent": {
+            "name": "Improved Reagents"
+        },
+        "InfusedReagents": {
+            "name": "Infused Reagents"
+        },
+        "PerfectReagent": {
+            "name": "Perfect Reagents"
+        },
+        "PhilosophersStone": {
+            "name": "Philosopher's Stone"
+        },
+        "PotionLob": {
+            "name": "Potion Lob"
+        },
+        "PotionPrep": {
+            "name": "Potion Prep"
+        },
+        "PowerupPotion": {
+            "name": "Power-up Potion"
+        },
+        "PreciseMix": {
+            "name": "Precise Mix"
+        },
+        "RainbowStrike": {
+            "name": "Rainbow Strike"
+        },
+        "Rapid Toss": {
+            "name": "RapidToss"
+        },
+        "SkillSwap": {
+            "name": "Skill Swap"
+        },
+        "SplitBatch": {
+            "name": "Split Batch"
+        },
+        "SuddenInspiration": {
+            "name": "Sudden Inspiration"
+        },
+        "AcidCoating": {
+            "name": "Acid Coating"
+        },
+        "AlchemistFire": {
+            "name": "Alchemist Fire"
+        },
+        "ConfusionDraught": {
+            "name": "Confusion Draught"
+        },
+        "EnergyDrink": {
+            "name": "Energy Drink"
+        },
+        "ExtraReagents": {
+            "name": "Extra Reagents"
+        },
+        "FreezerBomb": {
+            "name": "FreezerBomb"
+        },
+        "PotionBooster": {
+            "name": "Potion Booster"
+        },
+        "ShockWater": {
+            "name": "Shock Water"
+        },
+        "SightPotion": {
+            "name": "Seeing Salve"
+        },
+        "StrengthPotion": {
+            "name": "Draught of Power"
+        },
+        "SwiftnessPotion": {
+            "name": "Swiftfoot Salve"
+        },
+        "WrathPotion": {
+            "name": "Enraging Elixir"
+        }
+    },
+    "status": {
+        "Enflame": {
+            "name": "Enflame",
+            "description": "Each attack for the rest of the turn deals {0} heat to the target."
+        },
+        "Cryo": {
+            "name": "Cryo",
+            "description": "The next hit deals {0} to this ship."
+        },
+        "AcidTip": {
+            "name": "Acid Tip",
+            "description": "Your next attack applies {0} corrosion to the target."
+        },
+        "AcidSource": {
+            "name": "Acid Source",
+            "description": "Each attack for the rest of the turn deals {0} corrosion to the target."
+        },
+        "SuperStun": {
+            "name": "Super Stun",
+            "description": "Each attack for the rest of the turn stuns the target."
+        },
+        "PotionSaver": {
+            "name": "Potion Saver",
+            "description": "The next Potion card you play isn't consumed."
+        }
+    },
+    "deck": {
+        "Potions": {
+            "name": "Potions"
+        }
+    },
+    "character": {
+        "Nichole": {
+            "name": "Nichole",
+            "description": "Your ship's biochemical engineer. Nichole generates <c=abf5ff>potions</c> to support other characters, and can upgrade and use them in interesting ways."
+        }
+    }
+}

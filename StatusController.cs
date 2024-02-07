@@ -163,7 +163,7 @@ namespace JamesBrafin.Nichole
         private static void DoCryo(AAttack __instance, G g, State s, Combat c)
         {
             Ship ship = (__instance.targetPlayer ? c.otherShip : s.ship);
-            if (ModEntry.Instance.Cryo.Status <= 0) return;
+            if (ship.Get(ModEntry.Instance.Cryo.Status) <= 0) return;
 
             var baseDamage = __instance.damage;
             __instance.damage = baseDamage + ship.Get(ModEntry.Instance.Cryo.Status);
@@ -175,7 +175,10 @@ namespace JamesBrafin.Nichole
         [HarmonyPatch(typeof(Combat), nameof(Combat.TryPlayCard))]
         private static void savePotion(Combat __instance, State s, Card c, bool playNoMatterWhatForFree, bool exhaustNoMatterWhat)
         {
-            if(c.GetMeta().deck == ModEntry.Instance.Potion_Deck.Deck && !exhaustNoMatterWhat)
+            Ship ship = s.ship;
+            if (ship.Get(ModEntry.Instance.PotionSaver.Status) <= 0) return;
+
+            if (c.GetMeta().deck == ModEntry.Instance.Potion_Deck.Deck && !exhaustNoMatterWhat)
             {
                 Card newCard = c.CopyWithNewId();
                 __instance.QueueImmediate(new AAddCard()
@@ -183,6 +186,8 @@ namespace JamesBrafin.Nichole
                     card = newCard,
                     destination = CardDestination.Discard
                  });
+
+                ship.Set(ModEntry.Instance.PotionSaver.Status, ship.Get(ModEntry.Instance.PotionSaver.Status) - 1);
             }
         }
 

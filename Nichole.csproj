@@ -24,6 +24,7 @@
 	<ItemGroup>
 	  <Folder Include="Artifacts\" />
 	  <Folder Include="assets\artifacts\" />
+	  <Folder Include="assets\cards\Nichole\" />
 	  <Folder Include="assets\characters\" />
 	  <Folder Include="assets\screenshots\" />
 	  <Folder Include="assets\ships\" />
