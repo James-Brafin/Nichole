@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JamesBrafin.Nichole
 {
-    public class PotionCardBrowse : CardBrowse
+    public class SelectedCardBrowse : CardBrowse
     {
         public List<Card> Cards = null!;
     }

@@ -51,7 +51,7 @@ public class CardBrowsePatch
 
     private static void InjectCards(CardBrowse browse, List<Card> cardList)
     {
-        if (browse is not PotionCardBrowse acb) return;
+        if (browse is not SelectedCardBrowse acb) return;
         var toInject = acb.Cards;
 
         if (toInject == null) return;

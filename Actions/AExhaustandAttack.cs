@@ -13,6 +13,7 @@ namespace JamesBrafin.Nichole.Actions
         {
             if (selectedCard != null)
             {
+                s.RemoveCardFromWhereverItIs(selectedCard.uuid);
                 c.SendCardToExhaust(s, selectedCard);
                 c.QueueImmediate(new AAttack()
                 {

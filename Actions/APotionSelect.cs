@@ -61,7 +61,7 @@ namespace JamesBrafin.Nichole.Actions
 
             if (cards.Count < 0) { return null;}
 
-            var cardBrowse = new PotionCardBrowse
+            var cardBrowse = new SelectedCardBrowse
             {
                 mode = mode,
                 browseAction = action,
