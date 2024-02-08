@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,26 @@ namespace JamesBrafin.Nichole.Actions
         public bool Discards = false;
         public override void Begin(G g, State s, Combat c)
         {
-            List<Card> cardList = s.deck;
-            foreach (Card card in cardList)
+            foreach (Card card in s.deck)
             {
                 if (card.GetMeta().deck == ModEntry.Instance.Potion_Deck.Deck)
                 {
-                    c.TryPlayCard(s, card, playNoMatterWhatForFree: true, true);
+                    List<CardAction> actions = card.GetActions(s, c);
+                    s.RemoveCardFromWhereverItIs(card.uuid);
+                    c.SendCardToExhaust(s, card);
+                    foreach (CardAction action in actions)
+                    {
+                        if(action.GetType() == typeof(ADrawCard))
+                        {
+                            c.Queue(action);
+                        }
+                        else
+                        {
+                            c.QueueImmediate(action);
+                        }
+                    }
+                    
+              
                     if(All == false)
                     {
                         break;
@@ -27,12 +42,26 @@ namespace JamesBrafin.Nichole.Actions
 
             if (Discards)
             {
-                List<Card> discardList = c.discard;
-                foreach (Card card in cardList)
+                foreach (Card card in c.discard)
                 {
                     if (card.GetMeta().deck == ModEntry.Instance.Potion_Deck.Deck)
                     {
-                        c.TryPlayCard(s, card, playNoMatterWhatForFree: true, true);
+                        List<CardAction> actions = card.GetActions(s, c);
+                        s.RemoveCardFromWhereverItIs(card.uuid);
+                        c.SendCardToExhaust(s, card);
+                        c.QueueImmediate(actions);
+                        foreach (CardAction action in actions)
+                        {
+                            if (action.GetType() == typeof(ADrawCard))
+                            {
+                                c.Queue(action);
+                            }
+                            else
+                            {
+                                c.QueueImmediate(action);
+                            }
+                        }
+
                         if (All == false)
                         {
                             break;

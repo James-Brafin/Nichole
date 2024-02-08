@@ -28,8 +28,7 @@ internal sealed class ExtraReagents : Card, PotionCard
             /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
             cost = 0,
             temporary = true,
-            exhaust = true,
-            singleUse = true
+            exhaust = true
 
     /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
 };
@@ -47,7 +46,7 @@ internal sealed class ExtraReagents : Card, PotionCard
                 {
                     new ADrawCard()
                     {
-                        count = 2
+                        count = 1
                     }
                 };
                 actions = cardActionList1;
@@ -58,7 +57,7 @@ internal sealed class ExtraReagents : Card, PotionCard
                     new AStatus()
                     {
                         status = Status.drawNextTurn,
-                        statusAmount = 2,
+                        statusAmount = 1,
                         targetPlayer = true
                     },
 
@@ -70,7 +69,7 @@ internal sealed class ExtraReagents : Card, PotionCard
                 {
                     new ADrawCard()
                     {
-                        count = 3
+                        count = 2
                     }
                 };
                 actions = cardActionList3;

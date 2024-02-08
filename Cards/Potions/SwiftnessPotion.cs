@@ -29,7 +29,6 @@ internal sealed class SwiftnessPotion : Card, PotionCard
             cost = 0,
             temporary = true,
             exhaust = true,
-            singleUse = true,
             flippable = upgrade == Upgrade.B
 
     /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */

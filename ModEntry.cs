@@ -29,6 +29,8 @@ public sealed class ModEntry : SimpleMod
     internal ISpriteEntry Nichole_Neutral_0 { get; }
     internal ISpriteEntry Nichole_Mini_0 { get; }
     internal ISpriteEntry Nichole_Squint_0 { get; }
+    internal ISpriteEntry Foresight { get; }
+
 
     internal static IReadOnlyList<Type> Potion_CommonCard_Types { get; } = [
         typeof(AlchemistFire),
@@ -114,7 +116,7 @@ public sealed class ModEntry : SimpleMod
             Definition = new()
             {
                 icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/heatAdd.png")).Sprite,
-                color = new("b500be"),
+                color = new("ff4444"),
                 isGood = true
             },
             Name = this.AnyLocalizations.Bind(["status", "Enflame", "name"]).Localize,
@@ -126,7 +128,7 @@ public sealed class ModEntry : SimpleMod
             Definition = new()
             {
                 icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/cryo.png")).Sprite,
-                color = new("b500be"),
+                color = new("cbf9ff"),
                 isGood = true
             },
             Name = this.AnyLocalizations.Bind(["status", "Cryo", "name"]).Localize,
@@ -138,7 +140,7 @@ public sealed class ModEntry : SimpleMod
             Definition = new()
             {
                 icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/AcidTip.png")).Sprite,
-                color = new("b500be"),
+                color = new("84f408"),
                 isGood = true
             },
             Name = this.AnyLocalizations.Bind(["status", "AcidTip", "name"]).Localize,
@@ -150,7 +152,7 @@ public sealed class ModEntry : SimpleMod
             Definition = new()
             {
                 icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/AcidSource.png")).Sprite,
-                color = new("b500be"),
+                color = new("84f408"),
                 isGood = true
             },
             Name = this.AnyLocalizations.Bind(["status", "AcidSource", "name"]).Localize,
@@ -174,7 +176,7 @@ public sealed class ModEntry : SimpleMod
             Definition = new()
             {
                 icon = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/PotionSaver.png")).Sprite,
-                color = new("b500be"),
+                color = new("801cc0"),
                 isGood = true
             },
             Name = this.AnyLocalizations.Bind(["status", "PotionSaver", "name"]).Localize,
@@ -220,6 +222,8 @@ public sealed class ModEntry : SimpleMod
 
             Name = this.AnyLocalizations.Bind(["character", "Nichole", "name"]).Localize,
         });
+
+        Foresight = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/foresight.png"));
 
         Nichole_Character_Panel = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/nichole_panel.png"));
         Nichole_Neutral_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/neutral/Nichole_Neutral.png"));

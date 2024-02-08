@@ -48,12 +48,11 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.None:
                     List<CardAction> cardActionList1 = new List<CardAction>()
                 {
-                    
                     new APotionLob()
                     {
 
                     },
-                    new AAttackNoIcon()
+                    new AAttack()
                     {
                         damage = GetDmg(s, 1)
                     }
@@ -67,7 +66,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
 
                     },
-                    new AAttackNoIcon()
+                    new AAttack()
                     {
                         damage = GetDmg(s, 1)
                     }
@@ -85,7 +84,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
 
                     },
-                    new AAttackNoIcon()
+                    new AAttack()
                     {
                         damage = GetDmg(s, 1)
                     }

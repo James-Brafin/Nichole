@@ -29,8 +29,7 @@ internal sealed class SightPotion : Card, PotionCard
             /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
             cost = 0,
             temporary = true,
-            exhaust = true,
-            singleUse = true,
+            exhaust = true
 
 };
         return data;

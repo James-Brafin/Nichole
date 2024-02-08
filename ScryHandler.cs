@@ -17,8 +17,6 @@ namespace JamesBrafin.Nichole
 
     public double? takeCardAnimation;
 
-    public float upgradeChance;
-
     public double flourishTimer;
 
     public double flipFloppableCardsTimer;
