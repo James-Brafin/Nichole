@@ -48,8 +48,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 1),
-                        status = Status.heat,
+                        damage = GetDmg(s, 0),
+                        status = Status.corrode,
                         statusAmount = 1
                     }
                 };
@@ -60,8 +60,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 2),
-                        status = Status.heat,
+                        damage = GetDmg(s, 1),
+                        status = Status.corrode,
                         statusAmount = 1
                     }
                 };
@@ -72,8 +72,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 1),
-                        status = Status.heat,
+                        damage = GetDmg(s, 0),
+                        status = Status.corrode,
                         statusAmount = 2
                     }
                 };

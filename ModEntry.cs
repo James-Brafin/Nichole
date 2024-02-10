@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using JamesBrafin.Nichole.Cards.Potions;
 using JamesBrafin.Nichole.Cards.Nichole;
+using RandallMod;
+using JamesBrafin.Nichole.Artifacts;
 
 
 namespace JamesBrafin.Nichole;
@@ -98,6 +100,22 @@ public sealed class ModEntry : SimpleMod
         => Nichole_CommonCard_Types
         .Concat(Nichole_UnommonCard_Types)
         .Concat(Nichole_RareCard_Types);
+
+    internal static IReadOnlyList<Type> Nichole_CommonArtifact_Types { get; } = [
+        typeof(RecipieBook),
+        typeof(PotionBelt),
+        typeof(ElixirPoppers)
+    ];
+
+    internal static IReadOnlyList<Type> Nichole_BossArtifact_Types { get; } = [
+        typeof(LiquidExtender),
+        typeof(ExtraHands),
+        typeof(AlchemicalEngine),
+        typeof(PremadePotions)
+    ];
+    internal static IEnumerable<Type> Nichole_AllArtifact_Types
+        => Nichole_CommonArtifact_Types
+        .Concat(Nichole_BossArtifact_Types);
 
     public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
     {
@@ -299,7 +317,11 @@ public sealed class ModEntry : SimpleMod
         foreach (var cardType in Nichole_AllCard_Types)
             AccessTools.DeclaredMethod(cardType, nameof(NicholeCard.Register))?.Invoke(null, [helper]);
 
+        foreach (var artifactType in Nichole_AllArtifact_Types)
+            AccessTools.DeclaredMethod(artifactType, nameof(NicholeArtifact.Register))?.Invoke(null, [helper]);
+
         var harmony = new Harmony("Nichole");
         harmony.PatchAll();
+        CustomTTGlossary.ApplyPatches(harmony);
     }
 }

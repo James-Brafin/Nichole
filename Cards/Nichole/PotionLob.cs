@@ -50,11 +50,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new APotionLob()
                     {
-
-                    },
-                    new AAttack()
-                    {
-                        damage = GetDmg(s, 1)
+                        number = 1,
+                        Attack = true
                     }
                 };
                     actions = cardActionList1;
@@ -64,11 +61,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new APotionLob()
                     {
-
-                    },
-                    new AAttack()
-                    {
-                        damage = GetDmg(s, 1)
+                        number = 1,
+                        Attack = true
                     }
                 };
                     actions = cardActionList2;
@@ -78,15 +72,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new APotionLob()
                     {
-
-                    },
-                    new APotionLob()
-                    {
-
-                    },
-                    new AAttack()
-                    {
-                        damage = GetDmg(s, 1)
+                        number = 2,
+                        Attack = true
                     }
                 };
                     actions = cardActionList3;

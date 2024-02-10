@@ -15,6 +15,14 @@
     <GameDllPath>./CobaltCore.dll</GameDllPath>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Compile Remove="assets\screenshots\**" />
+	  <Compile Remove="assets\ships\**" />
+	  <EmbeddedResource Remove="assets\screenshots\**" />
+	  <EmbeddedResource Remove="assets\ships\**" />
+	  <None Remove="assets\screenshots\**" />
+	  <None Remove="assets\ships\**" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="Nickel.ModBuildConfig" Version="0.4.0" />
     <PackageReference Include="MakeTypesPublic" Version="1.0.3" PrivateAssets="All" ExcludeAssets="runtime" />
 	</ItemGroup>
@@ -22,11 +30,8 @@
 		<Project Include="Configuration.props.user" Condition="Exists('Configuration.props.user')" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Artifacts\" />
 	  <Folder Include="assets\artifacts\" />
 	  <Folder Include="assets\cards\Nichole\" />
 	  <Folder Include="assets\characters\" />
-	  <Folder Include="assets\screenshots\" />
-	  <Folder Include="assets\ships\" />
 	</ItemGroup>
 </Project>
