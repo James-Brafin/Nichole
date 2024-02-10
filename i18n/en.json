@@ -147,7 +147,7 @@
         },
         "SkillSwap": {
             "name": "Skill Swap",
-            "description": "Flip a <c=abf5ff>Potion's'</c> upgrade."
+            "description": "Flip a <c=abf5ff>Potion's</c> upgrade."
         },
         "SplitBatch": {
             "name": "Split Batch",

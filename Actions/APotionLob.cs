@@ -13,7 +13,7 @@ namespace JamesBrafin.Nichole.Actions
         public bool Discards = false;
         public int number = 1;
         public bool Attack = false;
-        public int atkAmount = 1; 
+        public int atkAmount = 0; 
         public override void Begin(G g, State s, Combat c)
         {
             for(int i = 0; i < number; i++) {
@@ -21,9 +21,10 @@ namespace JamesBrafin.Nichole.Actions
                 {
                     if (card.GetMeta().deck == ModEntry.Instance.Potion_Deck.Deck)
                     {
-                        s.RemoveCardFromWhereverItIs(card.uuid);
-                        c.SendCardToHand(s, card);
-                        c.TryPlayCard(s, card);
+                        c.QueueImmediate(new APlaySpecificCardFromAnywhere()
+                        {
+                            CardId = card.uuid
+                        });
                         if (All == false)
                         {
                             break;
@@ -37,9 +38,10 @@ namespace JamesBrafin.Nichole.Actions
                     {
                         if (card.GetMeta().deck == ModEntry.Instance.Potion_Deck.Deck)
                         {
-                            s.RemoveCardFromWhereverItIs(card.uuid);
-                            c.SendCardToHand(s, card);
-                            c.TryPlayCard(s, card);
+                            c.QueueImmediate(new APlaySpecificCardFromAnywhere()
+                            {
+                                CardId = card.uuid
+                            });
                             if (All == false)
                             {
                                 break;
@@ -53,7 +55,7 @@ namespace JamesBrafin.Nichole.Actions
             {
                 c.Queue(new AAttack()
                 {
-                    damage = (new Card()).GetDmg(s, atkAmount)
+                    damage = atkAmount
                 });
             }
             

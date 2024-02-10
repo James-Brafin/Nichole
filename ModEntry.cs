@@ -1,4 +1,4 @@
-﻿using JamesBrafin.Nichole.Cards;
+﻿
 using HarmonyLib;
 using Microsoft.Extensions.Logging;
 using Nanoray.PluginManager;
@@ -17,6 +17,8 @@ namespace JamesBrafin.Nichole;
 public sealed class ModEntry : SimpleMod
 {
     internal static ModEntry Instance { get; private set; } = null!;
+
+    internal IKokoroApi KokoroApi { get; private set; } = null!;
     internal ILocalizationProvider<IReadOnlyList<string>> AnyLocalizations { get; }
     internal ILocaleBoundNonNullLocalizationProvider<IReadOnlyList<string>> Localizations { get; }
     internal IStatusEntry Enflame { get; }
@@ -120,6 +122,7 @@ public sealed class ModEntry : SimpleMod
     public ModEntry(IPluginPackage<IModManifest> package, IModHelper helper, ILogger logger) : base(package, helper, logger)
     {
         Instance = this;
+        KokoroApi = helper.ModRegistry.GetApi<IKokoroApi>("Shockah.Kokoro")!;
 
         this.AnyLocalizations = new JsonLocalizationProvider(
             tokenExtractor: new SimpleLocalizationTokenExtractor(),
@@ -264,40 +267,41 @@ public sealed class ModEntry : SimpleMod
 
             /* This is the fancy panel that encapsulates your character while in active combat.
              * It's recommended that it follows the same color scheme as the character and deck, for cohesion */
-            BorderSprite = Nichole_Character_Panel.Sprite
-        });
+            BorderSprite = Nichole_Character_Panel.Sprite,
 
-        /* Let's create some animations, because if you were to boot up this mod from what you have above,
-         * DemoCharacter would be a blank void inside a box, we haven't added their sprites yet! */
-        Helper.Content.Characters.RegisterCharacterAnimation(new CharacterAnimationConfiguration()
-        {
-            /* Characters themselves aren't used that much by the code itself, most of the time we care about having the character's deck at hand */
-            Deck = Nichole_Deck.Deck,
-
-            /* The Looptag is the 'name' of the animation. When making shouts and events, and you want your character to show emotions, the LoopTag is what you want
-             * In vanilla Cobalt Core, there are 3 'animations' looptags that any character should have: "neutral", "mini" and "squint", as these are used in: Neutral is used as default, mini is used in character select and out-of-combat UI, and Squink is hardcoded used in certain events */
-            LoopTag = "neutral",
-
-            /* The game doesn't use frames properly when there are only 2 or 3 frames. If you want a proper animation, avoid only adding 2 or 3 frames to it */
-            Frames = new[]
+            NeutralAnimation = new()
             {
-                Nichole_Neutral_0.Sprite,
-                Nichole_Neutral_0.Sprite,
-                Nichole_Neutral_0.Sprite,
-                Nichole_Neutral_0.Sprite,
-                Nichole_Neutral_0.Sprite
-            }
-        });
-        Helper.Content.Characters.RegisterCharacterAnimation(new CharacterAnimationConfiguration()
-        {
-            Deck = Nichole_Deck.Deck,
-            LoopTag = "mini",
-            Frames = new[]
+                /* Characters themselves aren't used that much by the code itself, most of the time we care about having the character's deck at hand */
+                Deck = Nichole_Deck.Deck,
+
+                /* The Looptag is the 'name' of the animation. When making shouts and events, and you want your character to show emotions, the LoopTag is what you want
+                 * In vanilla Cobalt Core, there are 3 'animations' looptags that any character should have: "neutral", "mini" and "squint", as these are used in: Neutral is used as default, mini is used in character select and out-of-combat UI, and Squink is hardcoded used in certain events */
+                LoopTag = "neutral",
+
+                /* The game doesn't use frames properly when there are only 2 or 3 frames. If you want a proper animation, avoid only adding 2 or 3 frames to it */
+                Frames = new[]
+                {
+                    Nichole_Neutral_0.Sprite,
+                    Nichole_Neutral_0.Sprite,
+                    Nichole_Neutral_0.Sprite,
+                    Nichole_Neutral_0.Sprite,
+                    Nichole_Neutral_0.Sprite
+                }
+            },
+
+            MiniAnimation = new()
             {
-                /* Mini only needs one sprite. We call it animation just because we add it the same way as other expressions. */
-                Nichole_Mini_0.Sprite
+                Deck = Nichole_Deck.Deck,
+                LoopTag = "mini",
+                Frames = new[]
+                {
+                    /* Mini only needs one sprite. We call it animation just because we add it the same way as other expressions. */
+                    Nichole_Mini_0.Sprite
+                }
             }
+
         });
+
         Helper.Content.Characters.RegisterCharacterAnimation(new CharacterAnimationConfiguration()
         {
             Deck = Nichole_Deck.Deck,
@@ -323,5 +327,7 @@ public sealed class ModEntry : SimpleMod
         var harmony = new Harmony("Nichole");
         harmony.PatchAll();
         CustomTTGlossary.ApplyPatches(harmony);
+
+        
     }
 }

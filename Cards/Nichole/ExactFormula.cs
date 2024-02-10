@@ -51,7 +51,9 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
                       amount = 4,
                       limitDeck = ModEntry.Instance.Potion_Deck.Deck,
-                      rarityOverride = Rarity.uncommon
+                      rarityOverride = Rarity.uncommon,
+                      canSkip = false,
+                      inCombat = true
                     }
                 };
                     actions = cardActionList1;
@@ -63,7 +65,9 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
                       amount = 4,
                       limitDeck = ModEntry.Instance.Potion_Deck.Deck,
-                      rarityOverride = Rarity.uncommon
+                      rarityOverride = Rarity.uncommon,
+                      canSkip = false,
+                      inCombat = true
                     }
                 };
                     actions = cardActionList2;
@@ -75,13 +79,17 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
                       amount = 4,
                       limitDeck = ModEntry.Instance.Potion_Deck.Deck,
-                      rarityOverride = Rarity.uncommon
+                      rarityOverride = Rarity.uncommon,
+                      canSkip = false,
+                      inCombat = true
                     },
                     new ACardOffering()
                     {
                       amount = 4,
                       limitDeck = ModEntry.Instance.Potion_Deck.Deck,
-                      rarityOverride = Rarity.uncommon
+                      rarityOverride = Rarity.uncommon,
+                      canSkip = false,
+                      inCombat = true
                     }  
                 };
                     actions = cardActionList3;

@@ -1,4 +1,5 @@
 ﻿using Nickel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace JamesBrafin.Nichole;
 internal interface PotionCard
@@ -14,4 +15,9 @@ internal interface NicholeCard
 internal interface NicholeArtifact
 {
     static abstract void Register(IModHelper helper);
+}
+
+public interface IProxyProvider
+{
+    bool TryProxy<T>(object @object, [MaybeNullWhen(false)] out T proxy) where T : class;
 }
