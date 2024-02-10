@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,12 +15,14 @@ namespace JamesBrafin.Nichole.Actions
             if (selectedCard != null)
             {
                 Card newCard = selectedCard.CopyWithNewId();
+                ModEntry.Instance.Logger.LogInformation("check");
                 c.QueueImmediate(new AAddCard()
                 {
-                    card = selectedCard,
+                    card = newCard,
                     destination = CardDestination.Hand,
                     amount = amount
                 });
+                ModEntry.Instance.Logger.LogInformation("check");
             }
             
         }

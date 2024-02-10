@@ -78,25 +78,25 @@
         "ImprovedReagent": {
             "name": "Improved Reagents",
             "description": {
-                "None": "<c=boldPink>Draft</c> an uncommon <c=abf5ff>Potion</c> card.",
-                "A": "<c=boldPink>Draft</c> an uncommon upgraded <c=abf5ff>Potion</c> card.",
-                "B": "<c=boldPink>Draft</c> 2 uncommon <c=abf5ff>Potion</c> cards."
+                "None": "<c=boldPink>Draft</c> an uncommon <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>.",
+                "A": "<c=boldPink>Draft</c> an uncommon upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>.",
+                "B": "<c=boldPink>Draft</c> 2 uncommon <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
             }
         },
         "InfusedReagents": {
             "name": "Infused Reagents",
             "description": {
-                "None": "<c=boldPink>Draft</c> a common <c=abf5ff>Potion</c> card.",
-                "A": "<c=boldPink>Draft</c> a common upgraded <c=abf5ff>Potion</c> card.",
-                "B": "<c=boldPink>Draft</c> 2 common <c=abf5ff>Potion</c> cards."
+                "None": "<c=boldPink>Draft</c> a common <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>",
+                "A": "<c=boldPink>Draft</c> a common upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>",
+                "B": "<c=boldPink>Draft</c> 2 common <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
             }
         },
         "PerfectReagent": {
             "name": "Perfect Reagents",
             "description": {
-                "None": "<c=boldPink>Draft</c> a rare <c=abf5ff>Potion</c> card.",
-                "A": "<c=boldPink>Draft</c> a rare upgraded <c=abf5ff>Potion</c> card.",
-                "B": "<c=boldPink>Draft</c> 2 rare <c=abf5ff>Potion</c> cards."
+                "None": "<c=boldPink>Draft</c> a rare <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>.",
+                "A": "<c=boldPink>Draft</c> a rare upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>.",
+                "B": "<c=boldPink>Draft</c> 2 rare <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
             }
         },
         "PhilosophersStone": {

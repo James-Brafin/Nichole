@@ -51,6 +51,12 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
                       rarity = Rarity.rare,
                       isUpgraded = false
+                    },
+                    new AStatus()
+                    {
+                        status = Status.tempShield,
+                        statusAmount = 1,
+                        targetPlayer = true
                     }
                 };
                     actions = cardActionList1;
@@ -62,6 +68,12 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
                       rarity = Rarity.rare,
                       isUpgraded = true
+                    },
+                    new AStatus()
+                    {
+                        status = Status.shield,
+                        statusAmount = 1,
+                        targetPlayer = true
                     }
                 };
                     actions = cardActionList2;
@@ -78,6 +90,12 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
                       rarity = Rarity.rare,
                       isUpgraded = false
+                    },
+                    new AStatus()
+                    {
+                        status = Status.tempShield,
+                        statusAmount = 1,
+                        targetPlayer = true
                     }
                 };
                     actions = cardActionList3;

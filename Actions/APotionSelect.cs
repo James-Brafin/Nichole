@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -28,16 +29,16 @@ namespace JamesBrafin.Nichole.Actions
             var cardSet = new List<Card>();
             if (targetZone == CardSource.Hand)
             {
-                cardSet = c.hand;
+                cardSet.AddRange(c.hand);
             }
             else if (targetZone == CardSource.HandorDeck)
             {
-                cardSet = s.deck;
+                cardSet.AddRange(s.deck);
                 cardSet.AddRange(c.hand);
             }
             else if (targetZone == CardSource.NotExhaust)
             {
-                cardSet = s.deck;
+                cardSet.AddRange(s.deck);
                 cardSet.AddRange(c.hand);
                 cardSet.AddRange(c.discard);
             }
@@ -59,7 +60,7 @@ namespace JamesBrafin.Nichole.Actions
                 }
             }
 
-            if (cards.Count < 0) { return null;}
+            if (cards.Count <= 0) { return null;}
 
             var cardBrowse = new SelectedCardBrowse
             {

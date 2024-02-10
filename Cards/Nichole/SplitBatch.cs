@@ -53,8 +53,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                    {
                        targetZone = CardSource.Hand,
                        action = new ADuplicateCard(){amount = 1},
-                       mode = CardBrowse.Mode.Browse,
-                       filterUpgraded = true,
+                       mode = CardBrowse.Mode.Browse
                    }
                 };
                     actions = cardActionList1;
@@ -66,8 +65,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                    {
                        targetZone = CardSource.NotExhaust,
                        action = new ADuplicateCard(){amount = 1},
-                       mode = CardBrowse.Mode.Browse,
-                       filterUpgraded = true,
+                       mode = CardBrowse.Mode.Browse
                    }
                 };
                     actions = cardActionList2;
@@ -79,8 +77,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                    {
                        targetZone = CardSource.Hand,
                        action = new ADuplicateCard(){amount = 2},
-                       mode = CardBrowse.Mode.Browse,
-                       filterUpgraded = true,
+                       mode = CardBrowse.Mode.Browse
                    }
                 };
                     actions = cardActionList3;

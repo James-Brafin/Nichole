@@ -10,6 +10,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
 {
     internal class InfusedReagents : Card, NicholeCard
     {
+        
         public static void Register(IModHelper helper)
         {
             helper.Content.Cards.RegisterCard("InfusedReagents", new()
@@ -51,6 +52,12 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
                       rarity = Rarity.common,
                       isUpgraded = false
+                    },
+                    new AStatus()
+                    {
+                        status = Status.tempShield,
+                        statusAmount = 1,
+                        targetPlayer = true
                     }
                 };
                     actions = cardActionList1;
@@ -62,6 +69,13 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
                       rarity = Rarity.common,
                       isUpgraded = true
+                    },
+                    new AStatus()
+                    {
+                        status = Status.shield,
+                        statusAmount = 1,
+                        targetPlayer = true
+
                     }
                 };
                     actions = cardActionList2;
@@ -74,13 +88,17 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                       rarity = Rarity.common,
                       isUpgraded = false
                     },
-
                     new AAddRandomPotion()
                     {
                       rarity = Rarity.common,
                       isUpgraded = false
+                    },
+                    new AStatus()
+                    {
+                        status = Status.tempShield,
+                        statusAmount = 1,
+                        targetPlayer = true
                     }
-
                 };
                     actions = cardActionList3;
                     break;

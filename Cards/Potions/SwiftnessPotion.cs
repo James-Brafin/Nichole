@@ -48,7 +48,7 @@ internal sealed class SwiftnessPotion : Card, PotionCard
                     new AStatus()
                     {
                         status = Status.evade,
-                        statusAmount = 2,
+                        statusAmount = 1,
                         targetPlayer = true
                     }
                 };
@@ -60,7 +60,7 @@ internal sealed class SwiftnessPotion : Card, PotionCard
                     new AStatus()
                     {
                         status = Status.evade,
-                        statusAmount = 3,
+                        statusAmount = 2,
                         targetPlayer = true
                     }
                 };
@@ -73,14 +73,11 @@ internal sealed class SwiftnessPotion : Card, PotionCard
                     {
                         status = Status.evade,
                         statusAmount = 1,
-                        targetPlayer = true
                     },
-
-                    new
-                    AMove()
+                    new AStatus()
                     {
-                        dir = 2,
-                        targetPlayer = true,
+                        status = Status.hermes,
+                        statusAmount = 1,
                     }
                 };
                 actions = cardActionList3;
