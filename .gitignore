@@ -19,3 +19,4 @@ packages/**
 **/bin/**
 /bin
 /obj
+/Kokoro.dll
