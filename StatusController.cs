@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
+using JamesBrafin.Nichole.Actions;
 using Microsoft.Extensions.Logging;
 using static CardBrowse;
 
@@ -12,43 +13,6 @@ namespace JamesBrafin.Nichole
     [HarmonyPatch]
     internal class StatusController
     {
-
-        [HarmonyPostfix]
-        [HarmonyPatch(typeof(AAttack), nameof(AAttack.Begin))]
-        private static void DoEnflame(AAttack __instance, G g, State s, Combat c)
-        {
-            Ship target = (__instance.targetPlayer ? s.ship : c.otherShip);
-            Ship source = (__instance.targetPlayer ? c.otherShip : s.ship);
-            if (target == null || source == null || target.hull <= 0 || (__instance.fromDroneX.HasValue && !c.stuff.ContainsKey(__instance.fromDroneX.Value)))
-            {
-                return;
-            }
-            if (source.Get(ModEntry.Instance.Enflame.Status) <= 0) return;
-
-            int? num = __instance.GetFromX(s, c);
-            RaycastResult? raycastResult;
-            if (__instance.fromDroneX.HasValue)
-            {
-                raycastResult = ((RaycastResult?)CombatUtils.RaycastGlobal(c, target, fromDrone: true, __instance.fromDroneX.Value));
-            }
-            else
-            {
-                raycastResult = ((num.HasValue ? CombatUtils.RaycastFromShipLocal(s, c, num.Value, __instance.targetPlayer) : null)); 
-            }
-            bool flag = true;
-            if (target.Get(Status.autododgeLeft) > 0 || target.Get(Status.autododgeRight) > 0)
-                flag = false;
-            if (raycastResult != null && raycastResult.hitShip && flag)
-            {
-                c.QueueImmediate(new AStatus()
-                {
-                    status = Status.heat,
-                    statusAmount = source.Get(ModEntry.Instance.Enflame.Status),
-                    targetPlayer = __instance.targetPlayer,
-                    omitFromTooltips = true,
-                });
-            }
-        }
 
         [HarmonyPostfix]
         [HarmonyPatch(typeof(AAttack), nameof(AAttack.Begin))]
@@ -181,12 +145,7 @@ namespace JamesBrafin.Nichole
 
             if (card.GetMeta().deck == ModEntry.Instance.Potion_Deck.Deck && !exhaustNoMatterWhat)
             {
-                Card newCard = card.CopyWithNewId();
-                __instance.QueueImmediate(new AAddCard()
-                {
-                    card = newCard,
-                    destination = CardDestination.Discard
-                 });
+                card.exhaustOverride = false;
 
                 ship.Set(ModEntry.Instance.PotionSaver.Status, ship.Get(ModEntry.Instance.PotionSaver.Status) - 1);
             }
@@ -198,11 +157,22 @@ namespace JamesBrafin.Nichole
             ship.Set(status, 0);
         }
 
+        public static void EnflameHandler(Ship ship, Combat c)
+        {
+            while(ship.Get(ModEntry.Instance.Enflame.Status) >= 3)
+            {
+                int currentEnflame = ship.Get(ModEntry.Instance.Enflame.Status);
+                ship.Set(ModEntry.Instance.Enflame.Status, currentEnflame - 3);
+                c.QueueImmediate(new AHurt() { hurtAmount = 1, hurtShieldsFirst = false, targetPlayer = ship.isPlayerShip });
+            }
+        }
+
+
         [HarmonyPostfix]
         [HarmonyPatch(typeof(Ship), nameof(Ship.OnBeginTurn))]
         public static void HarmonyPostfix_Status_Cleanup(Ship __instance, State s, Combat c)
         {
-            ClearStatus(__instance, ModEntry.Instance.Enflame.Status);
+            EnflameHandler(__instance, c);
             ClearStatus(__instance, ModEntry.Instance.Cryo.Status);
             ClearStatus(__instance, ModEntry.Instance.AcidTip.Status);
             ClearStatus(__instance, ModEntry.Instance.AcidSource.Status);

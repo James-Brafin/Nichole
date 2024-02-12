@@ -1,4 +1,5 @@
-﻿using Nickel;
+﻿using JamesBrafin.Nichole.Actions;
+using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -48,7 +49,7 @@ internal sealed class AlchemistFire : Card, PotionCard
                     {
                         status = ModEntry.Instance.Enflame.Status,
                         statusAmount = 1,
-                        targetPlayer = true
+                        targetPlayer = false
                     }
                 };
                 actions = cardActionList1;
@@ -60,7 +61,7 @@ internal sealed class AlchemistFire : Card, PotionCard
                     {
                         status = ModEntry.Instance.Enflame.Status,
                         statusAmount = 1,
-                        targetPlayer = true,
+                        targetPlayer = false,
                     },
 
                     new AAttack()
@@ -77,13 +78,13 @@ internal sealed class AlchemistFire : Card, PotionCard
                     {
                         status = ModEntry.Instance.Enflame.Status,
                         statusAmount = 2,
-                        targetPlayer = true
+                        targetPlayer = false
                     }
                 };
                 actions = cardActionList3;
                 break;
         }
-
+        actions.Add(new AReturnExhaust() { card = this });
         return actions;
     }
 }

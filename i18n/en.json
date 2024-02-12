@@ -7,31 +7,31 @@
     },
     "artifact": {
         "RecipieBook": {
-            "name": "Recipie Book",
+            "name": "RECIPIE BOOK",
             "description": "When you play your first <c=abf5ff>Potion</c> each turn, create a <c=abf5ff>Potion</c> of the same rarity."
         },
         "PotionBelt": {
-            "name": "Potion Belt",
+            "name": "POTION BELT",
             "description": "You start each combat with a drafted Uncommon and a drafted Rare <c=abf5ff>Potion</c>."
         },
         "LiquidExtender": {
-            "name": "Liquid Extender",
+            "name": "LIQUID EXTENDER",
             "description": "You start each combat with a stack of Potion Saver."
         },
         "ExtraHands": {
-            "name": "Extra Hands",
+            "name": "EXTRA HANDS",
             "description": "When you play your first <c=abf5ff>Potion</c> each turn, draw a card."
         },
         "AlchemicalEngine": {
-            "name": "Alchemical Engine",
+            "name": "ALCHEMICAL ENGINE",
             "description": "Every 3 <c=abf5ff>Potions</c> you play, gain 1 Energy."
         },
         "PremadePotions": {
-            "name": "Premade Potions",
+            "name": "PREMADE POTIONS",
             "description": "You start each combat with a drafted common <c=abf5ff>Potion</c>."
         },
         "ElixirPoppers": {
-            "name": "Elixir Poppers",
+            "name": "ELIXIR POPPERS",
             "description": "When you play a <c=abf5ff>Potion</c>, immediately attack for 1 damage."
         }
     },
@@ -78,36 +78,36 @@
         "ImprovedReagent": {
             "name": "Improved Reagents",
             "description": {
-                "None": "<c=boldPink>Draft</c> an uncommon <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>.",
-                "A": "<c=boldPink>Draft</c> an uncommon upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>.",
-                "B": "<c=boldPink>Draft</c> 2 uncommon <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
+                "None": "<c=boldPink>Create</c> a random uncommon <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>.",
+                "A": "<c=boldPink>Create</c> a random uncommon upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>.",
+                "B": "<c=boldPink>Create</c> 2 random uncommon <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
             }
         },
         "InfusedReagents": {
             "name": "Infused Reagents",
             "description": {
-                "None": "<c=boldPink>Draft</c> a common <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>",
-                "A": "<c=boldPink>Draft</c> a common upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>",
-                "B": "<c=boldPink>Draft</c> 2 common <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
+                "None": "<c=boldPink>Create</c> a random common <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>",
+                "A": "<c=boldPink>Create</c> a random common upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>",
+                "B": "<c=boldPink>Create</c> 2 random common <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
             }
         },
         "PerfectReagent": {
             "name": "Perfect Reagents",
             "description": {
-                "None": "<c=boldPink>Draft</c> a rare <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>.",
-                "A": "<c=boldPink>Draft</c> a rare upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>.",
-                "B": "<c=boldPink>Draft</c> 2 rare <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
+                "None": "<c=boldPink>Create</c> a random rare <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>.",
+                "A": "<c=boldPink>Create</c> a random rare upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>.",
+                "B": "<c=boldPink>Create</c> 2 random rare <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
             }
         },
         "PhilosophersStone": {
             "name": "Perfect Tincture"
         },
         "PotionLob": {
-            "name": "Potion \nLob",
+            "name": "Cocktail Toss",
             "description": {
-                "None": "Play the top <c=abf5ff>Potion</c> from your deck. <c=hurt>Attack 2</c>.",
-                "A": "Play the top <c=abf5ff>Potion</c> from your deck. <c=hurt>Attack 2</c>.",
-                "B": "Play the top <c=abf5ff>Potion</c> from your deck twice. <c=hurt>Attack 2</c>."
+                "None": "Play the top <c=abf5ff>Potion</c> from your deck. <c=hurt>Attack 1</c>.",
+                "A": "Play the top <c=abf5ff>Potion</c> from your deck. <c=hurt>Attack 1</c>.",
+                "B": "Play the top <c=abf5ff>Potion</c> from your deck twice. <c=hurt>Attack 1</c>."
             }
         },
         "PotionPrep": {

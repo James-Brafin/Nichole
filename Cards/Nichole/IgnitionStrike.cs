@@ -49,7 +49,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     new AAttack()
                     {
                         damage = GetDmg(s, 1),
-                        status = Status.heat,
+                        status = ModEntry.Instance.Enflame.Status,
                         statusAmount = 1
                     }
                 };
@@ -61,7 +61,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     new AAttack()
                     {
                         damage = GetDmg(s, 2),
-                        status = Status.heat,
+                        status = ModEntry.Instance.Enflame.Status,
                         statusAmount = 1
                     }
                 };
@@ -73,8 +73,12 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     new AAttack()
                     {
                         damage = GetDmg(s, 1),
-                        status = Status.heat,
-                        statusAmount = 2
+                        status = ModEntry.Instance.Enflame.Status,
+                        statusAmount = 1
+                    },
+                    new ADrawCard()
+                    {
+                       count = 1
                     }
                 };
                     actions = cardActionList3;

@@ -81,7 +81,6 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     actions = cardActionList3;
                     break;
             }
-
             return actions;
         }
     }

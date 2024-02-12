@@ -1,4 +1,5 @@
-﻿using Nickel;
+﻿using JamesBrafin.Nichole.Actions;
+using Nickel;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -78,7 +79,7 @@ internal sealed class AcidCoating : Card, PotionCard
                 actions = cardActionList3;
                 break;
         }
-
+        actions.Add(new AReturnExhaust() { card = this });
         return actions;
     }
 }

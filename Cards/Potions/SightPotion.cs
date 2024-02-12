@@ -88,7 +88,7 @@ internal sealed class SightPotion : Card, PotionCard
                 actions = cardActionList3;
                 break;
         }
-
+        actions.Add(new AReturnExhaust() { card = this });
         return actions;
     }
 }
