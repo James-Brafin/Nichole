@@ -48,7 +48,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AScry()
                     {
-                        amount = 2
+                        amount = 3
                     }
                 };
 
@@ -59,7 +59,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AScry()
                     {
-                        amount = 3
+                        amount = 4
                     }
                 };
                     actions = cardActionList2;
@@ -69,11 +69,11 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AScry()
                     {
-                        amount = 2
+                        amount = 3
                     },
                     new AScry()
                     {
-                        amount = 2
+                        amount = 3
                     }
                 };
                     actions = cardActionList3;

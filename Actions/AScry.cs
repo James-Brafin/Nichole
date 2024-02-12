@@ -19,7 +19,12 @@ namespace JamesBrafin.Nichole.Actions
         {
             if (amount > s.deck.Count)
             {
-                c.QueueImmediate(new ADiscardShuffle());                
+                foreach (Card card in c.discard)
+                {
+                    s.SendCardToDeck(card, true, true);
+                }
+                c.discard.Clear();
+                s.ShuffleDeck(true);
             }
 
             List<Card> cardSet = new List<Card>();

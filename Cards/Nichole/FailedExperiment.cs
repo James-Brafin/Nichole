@@ -48,36 +48,48 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.None:
                     List<CardAction> cardActionList1 = new List<CardAction>()
                 {
-                   new APotionSelect()
-                   {
-                       targetZone = CardSource.Hand,
-                       action = new AExhaustandAttack(){damage = GetDmg(s, 2)},
-                       mode = CardBrowse.Mode.Browse,
-                   }
+                    new APotionSelect()
+                    {
+                        targetZone = CardSource.Hand,
+                        action = new AExhaustandAttack(){damage = GetDmg(s, 2)},
+                        mode = CardBrowse.Mode.Browse,
+                    },
+                    new ADrawCard()
+                    {
+                        count = 1
+                    }
                 };
                     actions = cardActionList1;
                     break;
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>()
                 {
-                   new APotionSelect()
-                   {
-                       targetZone = CardSource.Hand,
-                       action = new AExhaustandAttack(){damage = GetDmg(s, 4)},
-                       mode = CardBrowse.Mode.Browse,
-                   }
+                    new APotionSelect()
+                    {
+                        targetZone = CardSource.Hand,
+                        action = new AExhaustandAttack(){damage = GetDmg(s, 4)},
+                        mode = CardBrowse.Mode.Browse,
+                    },
+                    new ADrawCard()
+                    {
+                        count = 1
+                    }
                 };
                     actions = cardActionList2;
                     break;
                 case Upgrade.B:
                     List<CardAction> cardActionList3 = new List<CardAction>()
                 {
-                   new APotionSelect()
-                   {
-                       targetZone = CardSource.Hand,
-                       action = new AExhaustandAttack(){damage = GetDmg(s, 2)},
-                       mode = CardBrowse.Mode.Browse,
-                   }
+                    new APotionSelect()
+                    {
+                        targetZone = CardSource.Hand,
+                        action = new AExhaustandAttack(){damage = GetDmg(s, 2)},
+                        mode = CardBrowse.Mode.Browse,
+                    },
+                    new ADrawCard()
+                    {
+                        count = 1
+                    }
                 };
                     actions = cardActionList3;
                     break;

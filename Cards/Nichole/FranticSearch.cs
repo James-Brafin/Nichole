@@ -46,13 +46,13 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.None:
                     List<CardAction> cardActionList1 = new List<CardAction>()
                 {
-                    new ADrawCard()
-                    {
-                        count = 2
-                    },
                     new ADiscard()
                     {
                         count = 1
+                    },
+                    new ADrawCard()
+                    {
+                        count = 3
                     }
                 };
 
@@ -61,27 +61,27 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>()
                 {
-                    new ADrawCard()
-                    {
-                        count = 3
-                    },
                     new ADiscard()
                     {
                         count = 1
-                    }
+                    },
+                    new ADrawCard()
+                    {
+                        count = 4
+                    },
                 };
                     actions = cardActionList2;
                     break;
                 case Upgrade.B:
                     List<CardAction> cardActionList3 = new List<CardAction>()
                 {
-                    new ADrawCard()
-                    {
-                        count = 4
-                    },
                     new ADiscard()
                     {
                         count = 2
+                    },
+                    new ADrawCard()
+                    {
+                        count = 5
                     }
                 };
                     actions = cardActionList3;

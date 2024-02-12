@@ -30,7 +30,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             CardData data = new CardData()
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
-                cost = 2
+                cost = 1
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };
@@ -48,8 +48,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 0),
-                        status = Status.corrode,
+                        damage = GetDmg(s, 1),
+                        status = Status.heat,
                         statusAmount = 1
                     }
                 };
@@ -60,8 +60,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 1),
-                        status = Status.corrode,
+                        damage = GetDmg(s, 2),
+                        status = Status.heat,
                         statusAmount = 1
                     }
                 };
@@ -72,8 +72,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 2),
-                        status = Status.corrode,
+                        damage = GetDmg(s, 1),
+                        status = Status.heat,
                         statusAmount = 2
                     }
                 };

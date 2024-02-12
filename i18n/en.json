@@ -64,9 +64,9 @@
         "FailedExperiment": {
             "name": "Failed Experiment",
             "description": {
-                "None": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 2</c>.",
-                "A": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 4</c>.",
-                "B": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 2</c>."
+                "None": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 3</c>.",
+                "A": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 5</c>.",
+                "B": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 3</c>."
             }
         },
         "FranticSearch": {
@@ -105,9 +105,9 @@
         "PotionLob": {
             "name": "Potion \nLob",
             "description": {
-                "None": "Play the top <c=abf5ff>Potion</c> from your deck. <c=hurt>Attack 1</c>.",
-                "A": "Play the top <c=abf5ff>Potion</c> from your deck. <c=hurt>Attack 1</c>.",
-                "B": "Play the top two <c=abf5ff>Potions</c> from your deck. <c=hurt>Attack 1</c>."
+                "None": "Play the top <c=abf5ff>Potion</c> from your deck. <c=hurt>Attack 2</c>.",
+                "A": "Play the top <c=abf5ff>Potion</c> from your deck. <c=hurt>Attack 2</c>.",
+                "B": "Play the top <c=abf5ff>Potion</c> from your deck twice. <c=hurt>Attack 2</c>."
             }
         },
         "PotionPrep": {
@@ -231,7 +231,7 @@
     "character": {
         "Nichole": {
             "name": "Nichole",
-            "description": "Your ship's biochemical engineer. Nichole generates <c=abf5ff>potions</c> to support other characters, and can upgrade and use them in interesting ways."
+            "description": "<c=f8d280>NICHOLE</c>\nYour ship's biochemical engineer. Nichole generates, upgrades, and uses <c=abf5ff>potions</c> to support other characters."
         }
     }
 

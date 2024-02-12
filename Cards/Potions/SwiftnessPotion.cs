@@ -29,7 +29,7 @@ internal sealed class SwiftnessPotion : Card, PotionCard
             cost = 0,
             temporary = true,
             exhaust = true,
-            flippable = upgrade == Upgrade.B
+            flippable = true
 
     /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
 };
@@ -45,11 +45,11 @@ internal sealed class SwiftnessPotion : Card, PotionCard
             case Upgrade.None:
                 List<CardAction> cardActionList1 = new List<CardAction>()
                 {
-                    new AStatus()
+                    new AMove()
                     {
-                        status = Status.evade,
-                        statusAmount = 1,
-                        targetPlayer = true
+                        dir = 2,
+                        targetPlayer = true,
+                        ignoreHermes = false
                     }
                 };
                 actions = cardActionList1;
@@ -57,10 +57,16 @@ internal sealed class SwiftnessPotion : Card, PotionCard
             case Upgrade.A:
                 List<CardAction> cardActionList2 = new List<CardAction>()
                 {
+                    new AMove()
+                    {
+                        dir = 2,
+                        targetPlayer = true,
+                        ignoreHermes = false
+                    },
                     new AStatus()
                     {
                         status = Status.evade,
-                        statusAmount = 2,
+                        statusAmount = 1,
                         targetPlayer = true
                     }
                 };
@@ -71,13 +77,14 @@ internal sealed class SwiftnessPotion : Card, PotionCard
                 {
                     new AStatus()
                     {
-                        status = Status.evade,
-                        statusAmount = 1,
-                    },
-                    new AStatus()
-                    {
                         status = Status.hermes,
                         statusAmount = 1,
+                    },
+                    new AMove()
+                    {
+                        dir = 2,
+                        targetPlayer = true,
+                        ignoreHermes = false
                     }
                 };
                 actions = cardActionList3;

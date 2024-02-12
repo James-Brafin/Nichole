@@ -60,6 +60,7 @@ public sealed class ModEntry : SimpleMod
     internal static IReadOnlyList<Type> Nichole_StarterCard_Types { get; } = [
         /* Add more starter cards here if you'd like. */
         typeof(InfusedReagents),
+        typeof(IgnitionStrike),
         typeof(PotionLob)
     ];
 
@@ -206,7 +207,7 @@ public sealed class ModEntry : SimpleMod
 
         var Potion_Default_CardBackground = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/potion/potion_default_background.png")).Sprite;
         var Potion_CardFrame = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/potion/potion_cardframe.png")).Sprite;
-        var Nichole_Default_CardBackground = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/Nichole/Nichole_default_background.png")).Sprite;
+        var Nichole_Default_CardBackground = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/Nichole/nichole_default_background.png")).Sprite;
         var Nichole_CardFrame = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/cards/Nichole/Nichole_cardframe.png")).Sprite;
 
         /* Decks are assigned separate of the character. This is because the game has decks like Trash which is not related to a playable character
@@ -247,9 +248,9 @@ public sealed class ModEntry : SimpleMod
         Foresight = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/statuses/foresight.png"));
 
         Nichole_Character_Panel = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/nichole_panel.png"));
-        Nichole_Neutral_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/neutral/Nichole_Neutral.png"));
-        Nichole_Mini_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/Nichole_Small.png"));
-        Nichole_Squint_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/neutral/Nichole_Squint.png"));
+        Nichole_Neutral_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/neutral/Nichole_Neutral_0.png"));
+        Nichole_Mini_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/Nichole_Mini.png"));
+        Nichole_Squint_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/neutral/Nichole_Squint_0.png"));
 
         Helper.Content.Characters.RegisterCharacter("Nichole", new CharacterConfiguration()
         {
