@@ -78,25 +78,25 @@
         "ImprovedReagent": {
             "name": "Improved Reagents",
             "description": {
-                "None": "<c=boldPink>Create</c> a random uncommon <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>.",
-                "A": "<c=boldPink>Create</c> a random uncommon upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>.",
-                "B": "<c=boldPink>Create</c> 2 random uncommon <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
+                "None": "Create a random uncommon <c=abf5ff>Potion</c> card. Gain 1 <c=status>temp shield</c>.",
+                "A": "Create a random uncommon upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=status>shield</c>.",
+                "B": "Create 2 random uncommon <c=abf5ff>Potion</c> cards. Gain 1 <c=status>temp shield</c>."
             }
         },
         "InfusedReagents": {
             "name": "Infused Reagents",
             "description": {
-                "None": "<c=boldPink>Create</c> a random common <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>",
-                "A": "<c=boldPink>Create</c> a random common upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>",
-                "B": "<c=boldPink>Create</c> 2 random common <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
+                "None": "Create a random common <c=abf5ff>Potion</c> card. Gain 1 <c=status>temp shield</c>",
+                "A": "Create a random common upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=status>shield</c>",
+                "B": "Create 2 random common <c=abf5ff>Potion</c> cards. Gain 1 <c=status>temp shield</c>."
             }
         },
         "PerfectReagent": {
             "name": "Perfect Reagents",
             "description": {
-                "None": "<c=boldPink>Create</c> a random rare <c=abf5ff>Potion</c> card. Gain 1 <c=boldPink>Temp Shield</c>.",
-                "A": "<c=boldPink>Create</c> a random rare upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=3333ff>Shield</c>.",
-                "B": "<c=boldPink>Create</c> 2 random rare <c=abf5ff>Potion</c> cards. Gain 1 <c=boldPink>Temp Shield</c>."
+                "None": "Create a random rare <c=abf5ff>Potion</c> card. Gain 1 <c=status>temp shield</c>.",
+                "A": "Create a random rare upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=status>shield</c>.",
+                "B": "Create 2 random rare <c=abf5ff>Potion</c> cards. Gain 1 <c=status>Temp shield</c>."
             }
         },
         "PhilosophersStone": {

@@ -45,5 +45,12 @@ namespace JamesBrafin.Nichole.Artifacts
                 }
             }
         }
+
+        public override int? GetDisplayNumber(State s)
+        {
+            if (this.potionsPlayed != 0)
+                return this.potionsPlayed;
+            return null;
+        }
     }
 }
