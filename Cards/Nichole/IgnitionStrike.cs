@@ -74,11 +74,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     {
                         damage = GetDmg(s, 1),
                         status = ModEntry.Instance.Enflame.Status,
-                        statusAmount = 1
-                    },
-                    new ADrawCard()
-                    {
-                       count = 1
+                        statusAmount = 2
                     }
                 };
                     actions = cardActionList3;

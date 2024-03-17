@@ -34,6 +34,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 exhaust = upgrade == Upgrade.A,
                 description = ModEntry.Instance.Localizations.Localize(["card", "RapidToss", "description", upgrade.ToString()])
 
+
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };
             return data;
@@ -50,7 +51,9 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new APotionLob()
                     {
-                        All = true
+                        number = 1,
+                        Attack = false,
+                        All = true,
                     }
                 };
                     actions = cardActionList1;
@@ -60,7 +63,9 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new APotionLob()
                     {
-                        All = true
+                        number = 1,
+                        Attack = false,
+                        All = true,
                     }
                 };
                     actions = cardActionList2;
@@ -70,6 +75,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new APotionLob()
                     {
+                        number = 1,
+                        Attack = false,
                         All = true,
                         Discards = true
                     }

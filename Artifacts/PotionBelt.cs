@@ -32,13 +32,11 @@ namespace JamesBrafin.Nichole.Artifacts
             this.Pulse();
             combat.QueueImmediate(new AAddRandomPotion()
             {
-                rarity = Rarity.uncommon,
                 isUpgraded = false
             });
             this.Pulse();
             combat.QueueImmediate(new AAddRandomPotion()
             {
-                rarity = Rarity.rare,
                 isUpgraded = false
             });
         }

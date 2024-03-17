@@ -51,8 +51,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                    new APotionSelect()
                    {
-                       targetZone = CardSource.Hand,
-                       action = new ARandomUpgradeToCard(){},
+                       targetZone = CardSource.NotExhaust,
+                       action = new AUpgradeToCard(){randomUpgrade = true },
                        mode = CardBrowse.Mode.Browse,
                        filterUnupgraded = true
                    }
@@ -64,8 +64,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new APotionSelect()
                    {
-                       targetZone = CardSource.HandorDeck,
-                       action = new ARandomUpgradeToCard(){},
+                       targetZone = CardSource.NotExhaust,
+                       action = new AUpgradeToCard(){upgrade = Upgrade.A},
                        mode = CardBrowse.Mode.Browse,
                        filterUnupgraded = true
                    }
@@ -77,8 +77,9 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new APotionSelect()
                    {
-                       targetZone = CardSource.Hand,
-                       mode = CardBrowse.Mode.UpgradeCard,
+                       targetZone = CardSource.NotExhaust,
+                       action = new AUpgradeToCard(){upgrade = Upgrade.B},
+                       mode = CardBrowse.Mode.Browse,
                        filterUnupgraded = true
                    }
                 };

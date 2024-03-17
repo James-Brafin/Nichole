@@ -8,20 +8,20 @@ using JamesBrafin.Nichole.Actions;
 
 namespace JamesBrafin.Nichole.Cards.Nichole
 {
-    internal class RainbowStrike : Card, NicholeCard
+    internal class ShockingStrike : Card, NicholeCard
     {
         public static void Register(IModHelper helper)
         {
-            helper.Content.Cards.RegisterCard("RainbowStrike", new()
+            helper.Content.Cards.RegisterCard("ShockingStrike", new()
             {
                 CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
                 Meta = new()
                 {
                     deck = ModEntry.Instance.Nichole_Deck.Deck,
-                    rarity = Rarity.rare,
+                    rarity = Rarity.common,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "RainbowStrike", "name"]).Localize
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "ShockingStrike", "name"]).Localize
             });
         }
 
@@ -30,9 +30,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             CardData data = new CardData()
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
-                cost = 2,
-                exhaust = upgrade == Upgrade.A ? false : true,
-                description = ModEntry.Instance.Localizations.Localize(["card", "RainbowStrike", "description", upgrade.ToString()])
+                cost = upgrade == Upgrade.B ? 0 : 1,
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };
@@ -50,7 +48,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, s.ship.statusEffects.Count)
+                        damage = GetDmg(s, 1),
+                        stunEnemy = true
                     }
                 };
                     actions = cardActionList1;
@@ -60,7 +59,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, s.ship.statusEffects.Count)
+                        damage = GetDmg(s, 2),
+                        stunEnemy = true
                     }
                 };
                     actions = cardActionList2;
@@ -68,9 +68,10 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.B:
                     List<CardAction> cardActionList3 = new List<CardAction>()
                 {
-                   new AAttack()
+                    new AAttack()
                     {
-                        damage = GetDmg(s, s.ship.statusEffects.Count + 2)
+                        damage = GetDmg(s, 1),
+                        stunEnemy = true
                     }
                 };
                     actions = cardActionList3;

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace JamesBrafin.Nichole.Actions
 {
-    internal class ARandomUpgradeToCard : CardAction
+    internal class AUpgradeToCard : CardAction
     {
+        public bool randomUpgrade = false;
+        public Upgrade? upgrade = Upgrade.None;
         public override Route? BeginWithRoute(G g, State s, Combat c)
         {
             List<int> list = new List<int>();

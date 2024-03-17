@@ -8,11 +8,11 @@
     "artifact": {
         "RecipieBook": {
             "name": "RECIPIE BOOK",
-            "description": "When you play your first <c=abf5ff>Potion</c> each turn, create a <c=abf5ff>Potion</c> of the same rarity."
+            "description": "Contains a list of all Formulate Nichole has learned. Cards that create <c=abf5ff>Potions</c> choose randomly from all formuale in this book. \n \n When you defeat an Elite or a Boss, draft a new Potion to the Recipe book."
         },
         "PotionBelt": {
             "name": "POTION BELT",
-            "description": "You start each combat with a drafted Uncommon and a drafted Rare <c=abf5ff>Potion</c>."
+            "description": "You start each combat with two <c=abf5ff>Potions</c>."
         },
         "LiquidExtender": {
             "name": "LIQUID EXTENDER",
@@ -26,18 +26,35 @@
             "name": "ALCHEMICAL ENGINE",
             "description": "Every 3 <c=abf5ff>Potions</c> you play, gain 1 Energy."
         },
-        "PremadePotions": {
-            "name": "PREMADE POTIONS",
-            "description": "You start each combat with a drafted common <c=abf5ff>Potion</c>."
-        },
         "ElixirPoppers": {
             "name": "ELIXIR POPPERS",
             "description": "When you play a <c=abf5ff>Potion</c>, immediately attack for 1 damage."
+        },
+        "PlasmaRay": {
+            "name": "PLASMA RAY",
+            "description": "The first time the enemy is hit on a turn, they recieve a stack of Enflame."
+        },
+        "FrostRay": {
+            "name": "FROST RAY",
+            "description": "The first time the enemy is hit on a turn, they recieve a stack of Cryo."
+        },
+        "LeadtoGold": {
+            "name": "LEAD TO GOLD",
+            "description": "You gain 1 Perfect Shield at the start of combat. <c=hurt>You draw 1 less card on your first turn.</c>"
         }
     },
     "card": {
         "AcidSplash": {
-            "name": "Acid Splash"
+            "name": "Acid Strike"
+        },
+        "AdvancedBrewing": {
+            "name": "Advanced Brewing",
+            "description": {
+                "None": "Add a random <c=abf5ff>Potion</c> with a random upgrade.",
+                "A": "Add a random A-Side <c=abf5ff>Potion</c>.",
+                "B": "Add a random B-Side <c=abf5ff>Potion</c>."
+            }
+
         },
         "ChemicalBooster": {
             "name": "Chemical Booster",
@@ -47,27 +64,33 @@
                 "B": "Upgrade a <c=abf5ff>Potion</c> in your hand to a side of your choice."
             }
         },
+        "ChillingStrike": {
+            "name": "Chilling Strike"
+        },
         "DilutedDose": {
             "name": "Diluted Dose"
+        },
+        "DrawOnReserves": {
+            "name": "Draw On Reserves",
+            "description": {
+                "None": "Add 5 <c=abf5ff>Potions</c> to your deck.",
+                "A": "Add 5 <c=abf5ff>Potions</c> to your deck. Draw 2.",
+                "B": "Add 5 <c=abf5ff>Potions</c> to your deck."
+            }
         },
         "EnemyEnhancement": {
             "name": "Enemy Enhance"
         },
-        "ExactFormula": {
-            "name": "Exact Formula",
+        "Eureka": {
+            "name": "Eureka",
             "description": {
-                "None": "Add an uncommon <c=abf5ff>Potion</c> card of your choice.",
-                "A": "Add an unommon <c=abf5ff>Potion</c> card of your choice.",
-                "B": "Add two uncommon <c=abf5ff>Potion</c> cards of your choice."
+                "None": "Add a new Formulae to Nichole's Recipie Book.",
+                "B": "Add a new Formulae to Nichole's Recipie Book. Draw 3.",
+                "A": "Add two new Formulae to Nichole's Recipie Book."
             }
         },
-        "FailedExperiment": {
-            "name": "Failed Experiment",
-            "description": {
-                "None": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 3</c>.",
-                "A": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 5</c>.",
-                "B": "Exhaust a <c=abf5ff>Potion</c> in your hand. When you do, <c=hurt>Attack 3</c>."
-            }
+        "FlameBlast": {
+            "name": "Flame Blast"
         },
         "FranticSearch": {
             "name": "Frantic Search"
@@ -75,28 +98,12 @@
         "IgnitionStrike": {
             "name": "Ignition Strike"
         },
-        "ImprovedReagent": {
-            "name": "Improved Reagents",
-            "description": {
-                "None": "Create a random uncommon <c=abf5ff>Potion</c> card. Gain 1 <c=status>temp shield</c>.",
-                "A": "Create a random uncommon upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=status>shield</c>.",
-                "B": "Create 2 random uncommon <c=abf5ff>Potion</c> cards. Gain 1 <c=status>temp shield</c>."
-            }
-        },
         "InfusedReagents": {
             "name": "Infused Reagents",
             "description": {
-                "None": "Create a random common <c=abf5ff>Potion</c> card. Gain 1 <c=status>temp shield</c>",
-                "A": "Create a random common upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=status>shield</c>",
-                "B": "Create 2 random common <c=abf5ff>Potion</c> cards. Gain 1 <c=status>temp shield</c>."
-            }
-        },
-        "PerfectReagent": {
-            "name": "Perfect Reagents",
-            "description": {
-                "None": "Create a random rare <c=abf5ff>Potion</c> card. Gain 1 <c=status>temp shield</c>.",
-                "A": "Create a random rare upgraded <c=abf5ff>Potion</c> card. Gain 1 <c=status>shield</c>.",
-                "B": "Create 2 random rare <c=abf5ff>Potion</c> cards. Gain 1 <c=status>Temp shield</c>."
+                "None": "Add a random <c=abf5ff>Potion</c> to your hand. Gain 1 <c=status>temp shield</c>",
+                "A": "Add a random <c=abf5ff>Potion</c> to your hand. Gain 1 <c=status>shield</c>",
+                "B": "Add 2 random <c=abf5ff>Potions</c> to your hand. Gain 1 <c=status>temp shield</c>."
             }
         },
         "PhilosophersStone": {
@@ -113,28 +120,20 @@
         "PotionPrep": {
             "name": "Potion Prep"
         },
-        "PowerupPotion": {
-            "name": "Power-up Potion",
+        "PreciseMixture": {
+            "name": "Precise Mixture",
             "description": {
-                "None": "Upgrade a <c=abf5ff>Potion</c> in your hand to a random side, then play it.",
-                "A": "<c=textBold>Draw 2.</c> Upgrade a <c=abf5ff>Potion</c> in hand to a random side, then play it.",
-                "B": "Upgrade two <c=abf5ff>Potions</c> in your hand to a random side, then play them."
+                "None": "Draft 1 of 3 <c=abf5ff>Potions</c> to your draw pile.",
+                "A": "Draft 1 of 3 <c=abf5ff>Potions</c> to your draw pile.",
+                "B": "Draft 1 of 3 <c=abf5ff>Potions</c> to your draw pile twice."
             }
         },
-        "PreciseMix": {
-            "name": "Precise Mix",
+        "PreparedBatch": {
+            "name": "Prepared Batch",
             "description": {
-                "None": "Add a common <c=abf5ff>Potion</c> card of your choice.",
-                "A": "Add a common <c=abf5ff>Potion</c> card of your choice.",
-                "B": "Add two common <c=abf5ff>Potion</c> cards of your choice."
-            }
-        },
-        "RainbowStrike": {
-            "name": "Rainbow Strike",
-            "description": {
-                "None": "Deals <c=hurt>damage</c> equal to your total statuses.",
-                "A": "Deals <c=hurt>damage</c> equal to your total statuses.",
-                "B": "Deals <c=hurt>damage</c> equal to your total statuses plus two."
+                "None": "Add 2 of the same <c=abf5ff>Potion</c> to your hand.",
+                "A": "Add 2 of the same <c=abf5ff>Potion</c> to your hand.",
+                "B": "Add 3 of the same <c=abf5ff>Potion</c> to your hand."
             }
         },
         "RapidToss": {
@@ -144,6 +143,9 @@
                 "A": "Draw and play all <c=abf5ff>Potions</c> from your deck.",
                 "B": "Draw and play all <c=abf5ff>Potions</c> from your Deck and Discards."
             }
+        },
+        "ShockingStrike": {
+            "name": "Shocking Strike"
         },
         "SkillSwap": {
             "name": "Skill Swap",
@@ -195,12 +197,30 @@
         },
         "WrathPotion": {
             "name": "Enraging Elixir"
+        },
+        "IronskinPotion": {
+            "name": "Ironskin Potion"
+        },
+        "DraughtOfCommand": {
+            "name": "Draught Of Command"
+        },
+        "BottleOfRocks": {
+            "name": "Bottle Of Rocks"
+        },
+        "CanOfMissiles": {
+            "name": "Can Of Missles"
+        },
+        "SteelshardGrenade": {
+            "name": "Steelshard Grenade"
+        },
+        "WeakeningQuaff": {
+            "name": "Weakening Quaff"
         }
     },
     "status": {
         "Enflame": {
             "name": "Enflame",
-            "description": "Each attack for the rest of the turn deals {0} heat to the target."
+            "description": "At the end of the turn, this ship takes {0} damage, and Enflame decreases by 1."
         },
         "Cryo": {
             "name": "Cryo",

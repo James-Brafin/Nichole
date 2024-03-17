@@ -35,69 +35,68 @@ public sealed class ModEntry : SimpleMod
     internal ISpriteEntry Nichole_Squint_0 { get; }
     internal ISpriteEntry Foresight { get; }
 
-
-    internal static IReadOnlyList<Type> Potion_CommonCard_Types { get; } = [
+    internal static IReadOnlyList<Type> Potion_StartingCards { get; } = [
         typeof(AlchemistFire),
         typeof(FreezerBomb),
-        typeof(SwiftnessPotion),
-        typeof(ExtraReagents)
+        typeof(SwiftnessPotion)
     ];
 
-    internal static IReadOnlyList<Type> Potion_UnommonCard_Types { get; } = [
+    internal static IReadOnlyList<Type> Potion_notStartingCards { get; } = [
+        typeof(ExtraReagents),
+        typeof(DraughtOfCommand),
+        typeof(BottleOfRocks),
         typeof(EnergyDrink),
         typeof(SightPotion),
         typeof(StrengthPotion),
-        typeof(WrathPotion)
-    ];
-
-    internal static IReadOnlyList<Type> Potion_RareCard_Types { get; } = [
+        typeof(WrathPotion),
+        typeof(CanOfMissiles),
+        typeof(SteelshardGrenade),
+        typeof(IronskinPotion),
         typeof(AcidCoating),
         typeof(ConfusionDraught),
         typeof(ShockWater),
-        typeof(PotionBooster)
+        typeof(PotionBooster),
+        typeof(WeakeningQuaff)
     ];
 
     internal static IReadOnlyList<Type> Nichole_StarterCard_Types { get; } = [
-        /* Add more starter cards here if you'd like. */
         typeof(InfusedReagents),
-        typeof(IgnitionStrike),
-        typeof(PotionLob)
+        typeof(IgnitionStrike)
     ];
 
     internal static IReadOnlyList<Type> Nichole_CommonCard_Types { get; } = [
         typeof(InfusedReagents),
+        typeof(PreparedBatch),
         typeof(PotionLob),
         typeof(ChemicalBooster),
         typeof(PotionPrep),
         typeof(IgnitionStrike),
         typeof(FranticSearch),
-        typeof(FailedExperiment),
-        typeof(SkillSwap),
-        typeof(EnemyEnhancement)
+        typeof(EnemyEnhancement),
+        typeof(ChillingStrike)
     ];
 
     internal static IReadOnlyList<Type> Nichole_UnommonCard_Types { get; } = [
-        typeof(ImprovedReagent),
-        typeof(PreciseMix),
         typeof(SplitBatch),
         typeof(AcidSplash),
         typeof(DilutedDose),
-        typeof(PowerupPotion),
-        typeof(SuddenInspiration)
+        typeof(SuddenInspiration),
+        typeof(AdvancedBrewing),
+        typeof(PreciseMixture),
+        typeof(ShockingStrike),
     ];
 
     internal static IReadOnlyList<Type> Nichole_RareCard_Types { get; } = [
-        typeof(PerfectReagent),
-        typeof(ExactFormula),
         typeof(PhilosophersStone),
-        typeof(RainbowStrike),
-        typeof(RapidToss)
+        typeof(RapidToss),
+        typeof(DrawOnReserves),
+        typeof(Eureka),
+        typeof(FlameBlast)
     ];
 
     internal static IEnumerable<Type> Potion_AllCard_Types
-        => Potion_CommonCard_Types
-        .Concat(Potion_UnommonCard_Types)
-        .Concat(Potion_RareCard_Types);
+        => Potion_StartingCards
+        .Concat(Potion_notStartingCards);
 
     internal static IEnumerable<Type> Nichole_AllCard_Types
         => Nichole_CommonCard_Types
@@ -113,8 +112,7 @@ public sealed class ModEntry : SimpleMod
     internal static IReadOnlyList<Type> Nichole_BossArtifact_Types { get; } = [
         typeof(LiquidExtender),
         typeof(ExtraHands),
-        typeof(AlchemicalEngine),
-        typeof(PremadePotions)
+        typeof(AlchemicalEngine)
     ];
     internal static IEnumerable<Type> Nichole_AllArtifact_Types
         => Nichole_CommonArtifact_Types
@@ -261,6 +259,8 @@ public sealed class ModEntry : SimpleMod
             /* The Starter Card Types are, as the name implies, the cards you will start a DemoCharacter run with. 
              * You could provide vanilla cards if you want, but it's way more fun to create your own cards! */
             StarterCardTypes = Nichole_StarterCard_Types,
+
+            StarterArtifactTypes = new Type[] { typeof(RecipieBook) },
 
             /* This is the little blurb that appears when you hover over the character in-game.
              * You can make it fluff, use it as a way to tell players about the character's playstyle, or a little bit of both! */

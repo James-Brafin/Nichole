@@ -159,21 +159,20 @@ namespace JamesBrafin.Nichole
 
         public static void EnflameHandler(Ship ship, Combat c)
         {
-            while(ship.Get(ModEntry.Instance.Enflame.Status) >= 3)
+            if(ship.Get(ModEntry.Instance.Enflame.Status) > 0)
             {
                 int currentEnflame = ship.Get(ModEntry.Instance.Enflame.Status);
-                ship.Set(ModEntry.Instance.Enflame.Status, currentEnflame - 3);
-                c.QueueImmediate(new AHurt() { hurtAmount = 1, hurtShieldsFirst = false, targetPlayer = ship.isPlayerShip });
+                c.QueueImmediate(new AHurt() { hurtAmount = currentEnflame, hurtShieldsFirst = false, targetPlayer = ship.isPlayerShip });
+                ship.Set(ModEntry.Instance.Enflame.Status, currentEnflame - 1);
             }
         }
 
-
         [HarmonyPostfix]
         [HarmonyPatch(typeof(Ship), nameof(Ship.OnBeginTurn))]
-        public static void HarmonyPostfix_Status_Cleanup(Ship __instance, State s, Combat c)
+        public static void HarmonyPostfix_Status_Cleanup_BeforeTurn(Ship __instance, State s, Combat c)
         {
-            EnflameHandler(__instance, c);
             ClearStatus(__instance, ModEntry.Instance.Cryo.Status);
+            EnflameHandler(__instance, c);
             ClearStatus(__instance, ModEntry.Instance.AcidTip.Status);
             ClearStatus(__instance, ModEntry.Instance.AcidSource.Status);
             ClearStatus(__instance, ModEntry.Instance.SuperStun.Status);

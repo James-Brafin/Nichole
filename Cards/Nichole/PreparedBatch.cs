@@ -8,20 +8,21 @@ using JamesBrafin.Nichole.Actions;
 
 namespace JamesBrafin.Nichole.Cards.Nichole
 {
-    internal class PerfectReagent : Card, NicholeCard
+    internal class PreparedBatch : Card, NicholeCard
     {
+        
         public static void Register(IModHelper helper)
         {
-            helper.Content.Cards.RegisterCard("PerfectReagent", new()
+            helper.Content.Cards.RegisterCard("PreparedBatch", new()
             {
                 CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
                 Meta = new()
                 {
                     deck = ModEntry.Instance.Nichole_Deck.Deck,
-                    rarity = Rarity.rare,
+                    rarity = Rarity.common,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "PerfectReagent", "name"]).Localize
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "PreparedBatch", "name"]).Localize
             });
         }
 
@@ -31,7 +32,9 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
                 cost = 1,
-                description = ModEntry.Instance.Localizations.Localize(["card", "PerfectReagent", "description", upgrade.ToString()])
+                exhaust = true,
+                buoyant = upgrade == Upgrade.A,
+                description = ModEntry.Instance.Localizations.Localize(["card", "PreparedBatch", "description", upgrade.ToString()])
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };
@@ -49,14 +52,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAddRandomPotion()
                     {
-                      rarity = Rarity.rare,
-                      isUpgraded = false
-                    },
-                    new AStatus()
-                    {
-                        status = Status.tempShield,
-                        statusAmount = 1,
-                        targetPlayer = true
+                      isUpgraded = false,
+                      amount = 2
                     }
                 };
                     actions = cardActionList1;
@@ -66,14 +63,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAddRandomPotion()
                     {
-                      rarity = Rarity.rare,
-                      isUpgraded = true
-                    },
-                    new AStatus()
-                    {
-                        status = Status.shield,
-                        statusAmount = 1,
-                        targetPlayer = true
+                      isUpgraded = true,
+                      amount = 2
                     }
                 };
                     actions = cardActionList2;
@@ -83,20 +74,9 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAddRandomPotion()
                     {
-                      rarity = Rarity.rare,
-                      isUpgraded = false
+                      isUpgraded = false,
+                      amount = 3
                     },
-                    new AAddRandomPotion()
-                    {
-                      rarity = Rarity.rare,
-                      isUpgraded = false
-                    },
-                    new AStatus()
-                    {
-                        status = Status.tempShield,
-                        statusAmount = 1,
-                        targetPlayer = true
-                    }
                 };
                     actions = cardActionList3;
                     break;

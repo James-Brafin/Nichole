@@ -5,15 +5,14 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using JamesBrafin.Nichole.Actions;
-using static JamesBrafin.Nichole.Actions.APotionSelect;
 
 namespace JamesBrafin.Nichole.Cards.Nichole
 {
-    internal class PowerupPotion : Card, NicholeCard
+    internal class FlameBlast : Card, NicholeCard
     {
         public static void Register(IModHelper helper)
         {
-            helper.Content.Cards.RegisterCard("PowerupPotion", new()
+            helper.Content.Cards.RegisterCard("FlameBlast", new()
             {
                 CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
                 Meta = new()
@@ -22,7 +21,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     rarity = Rarity.common,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "PowerupPotion", "name"]).Localize
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "FlameBlast", "name"]).Localize
             });
         }
 
@@ -31,8 +30,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             CardData data = new CardData()
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
-                cost = 1,
-                description = ModEntry.Instance.Localizations.Localize(["card", "PowerupPotion", "description", upgrade.ToString()])
+                cost = 1
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };
@@ -46,52 +44,38 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             switch (upgrade)
             {
                 case Upgrade.None:
-                List<CardAction> cardActionList1 = new List<CardAction>()
+                    List<CardAction> cardActionList1 = new List<CardAction>()
                 {
-                   new APotionSelect()
-                   {
-                       targetZone = CardSource.Hand,
-                       action = new AUpgradeAndPlay(){},
-                       mode = CardBrowse.Mode.Browse,
-                       filterUpgraded = true,
-                   }
+                    new AAttack()
+                    {
+                        damage = GetDmg(s, 2),
+                        status = ModEntry.Instance.Enflame.Status,
+                        statusAmount = 2
+                    }
                 };
                     actions = cardActionList1;
                     break;
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>()
                 {
-                   new ADrawCard()
-                   {
-                        count = 2
-                   },
-                   new APotionSelect()
-                   {
-                       targetZone = CardSource.Hand,
-                       action = new AUpgradeAndPlay(){},
-                       mode = CardBrowse.Mode.Browse,
-                       filterUpgraded = true,
-                   }
+                    new AAttack()
+                    {
+                        damage = GetDmg(s, 2),
+                        status = ModEntry.Instance.Enflame.Status,
+                        statusAmount = 3
+                    }
                 };
                     actions = cardActionList2;
                     break;
                 case Upgrade.B:
                     List<CardAction> cardActionList3 = new List<CardAction>()
                 {
-                   new APotionSelect()
-                   {
-                       targetZone = CardSource.Hand,
-                       action = new AUpgradeAndPlay(){},
-                       mode = CardBrowse.Mode.Browse,
-                       filterUpgraded = true,
-                   },
-                   new APotionSelect()
-                   {
-                       targetZone = CardSource.Hand,
-                       action = new AUpgradeAndPlay(){},
-                       mode = CardBrowse.Mode.Browse,
-                       filterUpgraded = true,
-                   }
+                    new AAttack()
+                    {
+                        damage = GetDmg(s, 3),
+                        status = ModEntry.Instance.Enflame.Status,
+                        statusAmount = 2
+                    }
                 };
                     actions = cardActionList3;
                     break;

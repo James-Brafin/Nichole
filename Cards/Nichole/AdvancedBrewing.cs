@@ -8,11 +8,12 @@ using JamesBrafin.Nichole.Actions;
 
 namespace JamesBrafin.Nichole.Cards.Nichole
 {
-    internal class PreciseMix : Card, NicholeCard
+    internal class AdvancedBrewing : Card, NicholeCard
     {
+        
         public static void Register(IModHelper helper)
         {
-            helper.Content.Cards.RegisterCard("PreciseMix", new()
+            helper.Content.Cards.RegisterCard("AdvancedBrewing", new()
             {
                 CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
                 Meta = new()
@@ -21,7 +22,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     rarity = Rarity.uncommon,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "PreciseMix", "name"]).Localize
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "AdvancedBrewing", "name"]).Localize
             });
         }
 
@@ -30,8 +31,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             CardData data = new CardData()
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
-                cost = upgrade == Upgrade.A ? 0 : 1,
-                description = ModEntry.Instance.Localizations.Localize(["card", "PreciseMix", "description", upgrade.ToString()])
+                cost = 1,
+                description = ModEntry.Instance.Localizations.Localize(["card", "AdvancedBrewing", "description", upgrade.ToString()])
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };
@@ -47,13 +48,10 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.None:
                     List<CardAction> cardActionList1 = new List<CardAction>()
                 {
-                    new ACardOffering()
+                    new AAddRandomPotion()
                     {
-                      amount = 4,
-                      limitDeck = ModEntry.Instance.Potion_Deck.Deck,
-                      rarityOverride = Rarity.common,
-                      canSkip = false,
-                      inCombat = true
+                      isUpgraded = true,
+                      randomUpgrade = true,
                     }
                 };
                     actions = cardActionList1;
@@ -61,13 +59,10 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>()
                 {
-                    new ACardOffering()
+                    new AAddRandomPotion()
                     {
-                      amount = 4,
-                      limitDeck = ModEntry.Instance.Potion_Deck.Deck,
-                      rarityOverride = Rarity.common,
-                      canSkip = false,
-                      inCombat = true
+                      isUpgraded = true,
+                      upgradeType = Upgrade.A
                     }
                 };
                     actions = cardActionList2;
@@ -75,21 +70,10 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.B:
                     List<CardAction> cardActionList3 = new List<CardAction>()
                 {
-                    new ACardOffering()
+                    new AAddRandomPotion()
                     {
-                      amount = 4,
-                      limitDeck = ModEntry.Instance.Potion_Deck.Deck,
-                      rarityOverride = Rarity.common,
-                      canSkip = false,
-                      inCombat = true
-                    },
-                    new ACardOffering()
-                    {
-                      amount = 4,
-                      limitDeck = ModEntry.Instance.Potion_Deck.Deck,
-                      rarityOverride = Rarity.common,
-                      canSkip = false,
-                      inCombat = true
+                      isUpgraded = true,
+                      upgradeType = Upgrade.B
                     }
                 };
                     actions = cardActionList3;

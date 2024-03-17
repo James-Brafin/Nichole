@@ -50,7 +50,6 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAddRandomPotion()
                     {
-                      rarity = Rarity.common,
                       isUpgraded = false
                     },
                     new AStatus()
@@ -67,8 +66,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAddRandomPotion()
                     {
-                      rarity = Rarity.common,
-                      isUpgraded = true
+                      isUpgraded = false
                     },
                     new AStatus()
                     {
@@ -85,12 +83,10 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAddRandomPotion()
                     {
-                      rarity = Rarity.common,
                       isUpgraded = false
                     },
                     new AAddRandomPotion()
                     {
-                      rarity = Rarity.common,
                       isUpgraded = false
                     },
                     new AStatus()

@@ -5,24 +5,24 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using JamesBrafin.Nichole.Actions;
-using static JamesBrafin.Nichole.Actions.APotionSelect;
 
 namespace JamesBrafin.Nichole.Cards.Nichole
 {
-    internal class FailedExperiment : Card, NicholeCard
+    internal class Eureka : Card, NicholeCard
     {
+        
         public static void Register(IModHelper helper)
         {
-            helper.Content.Cards.RegisterCard("FailedExperiment", new()
+            helper.Content.Cards.RegisterCard("Eureka", new()
             {
                 CardType = MethodBase.GetCurrentMethod()!.DeclaringType!,
                 Meta = new()
                 {
                     deck = ModEntry.Instance.Nichole_Deck.Deck,
-                    rarity = Rarity.common,
+                    rarity = Rarity.rare,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
-                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "FailedExperiment", "name"]).Localize
+                Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "Eureka", "name"]).Localize
             });
         }
 
@@ -31,8 +31,9 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             CardData data = new CardData()
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
-                cost = upgrade == Upgrade.B ? 0: 1,
-                description = ModEntry.Instance.Localizations.Localize(["card", "FailedExperiment", "description", upgrade.ToString()])
+                cost = 1,
+                singleUse = true,
+                description = ModEntry.Instance.Localizations.Localize(["card", "Eureka", "description", upgrade.ToString()])
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };
@@ -48,15 +49,9 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.None:
                     List<CardAction> cardActionList1 = new List<CardAction>()
                 {
-                    new APotionSelect()
+                    new AResearch()
                     {
-                        targetZone = CardSource.Hand,
-                        action = new AExhaustandAttack(){damage = GetDmg(s, 2)},
-                        mode = CardBrowse.Mode.Browse,
-                    },
-                    new ADrawCard()
-                    {
-                        count = 1
+
                     }
                 };
                     actions = cardActionList1;
@@ -64,15 +59,13 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.A:
                     List<CardAction> cardActionList2 = new List<CardAction>()
                 {
-                    new APotionSelect()
+                    new AResearch()
                     {
-                        targetZone = CardSource.Hand,
-                        action = new AExhaustandAttack(){damage = GetDmg(s, 4)},
-                        mode = CardBrowse.Mode.Browse,
+
                     },
-                    new ADrawCard()
+                    new AResearch()
                     {
-                        count = 1
+
                     }
                 };
                     actions = cardActionList2;
@@ -80,15 +73,13 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 case Upgrade.B:
                     List<CardAction> cardActionList3 = new List<CardAction>()
                 {
-                    new APotionSelect()
+                    new AResearch()
                     {
-                        targetZone = CardSource.Hand,
-                        action = new AExhaustandAttack(){damage = GetDmg(s, 2)},
-                        mode = CardBrowse.Mode.Browse,
+
                     },
                     new ADrawCard()
                     {
-                        count = 1
+                        count = 3
                     }
                 };
                     actions = cardActionList3;
