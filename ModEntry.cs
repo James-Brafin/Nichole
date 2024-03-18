@@ -10,6 +10,7 @@ using JamesBrafin.Nichole.Cards.Potions;
 using JamesBrafin.Nichole.Cards.Nichole;
 using RandallMod;
 using JamesBrafin.Nichole.Artifacts;
+using JamesBrafin.Nichole.Actions;
 
 
 namespace JamesBrafin.Nichole;
@@ -328,6 +329,8 @@ public sealed class ModEntry : SimpleMod
         var harmony = new Harmony("Nichole");
         harmony.PatchAll();
         CustomTTGlossary.ApplyPatches(harmony);
+        AResearch.ApplyPatches(harmony);
+        ASpecificRandCardOffering.ApplyPatches(harmony);
 
         
     }
