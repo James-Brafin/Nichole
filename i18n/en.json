@@ -7,8 +7,8 @@
     },
     "artifact": {
         "RecipieBook": {
-            "name": "RECIPIE BOOK",
-            "description": "Contains a list of all Formulate Nichole has learned. Cards that create <c=abf5ff>Potions</c> choose randomly from all formuale in this book. \n \n When you defeat an Elite or a Boss, draft a new Potion to the Recipe book."
+            "name": "RECIPE BOOK",
+            "description": "Contains a list of all Formulate Nichole has learned. Cards that create <c=abf5ff>Potions</c> choose randomly from all formulae in this book. \n \n When you defeat an Elite or a Boss, draft a new Potion to the Recipe book."
         },
         "PotionBelt": {
             "name": "POTION BELT",
@@ -59,9 +59,9 @@
         "ChemicalBooster": {
             "name": "Chemical Booster",
             "description": {
-                "None": "Upgrade a <c=abf5ff>Potion</c> in your hand to a random side.",
-                "A": "Upgrade a <c=abf5ff>Potion</c> in your hand or deck to a random side.",
-                "B": "Upgrade a <c=abf5ff>Potion</c> in your hand to a side of your choice."
+                "None": "Upgrade a <c=abf5ff>Potion</c> from anywhere to a random side.",
+                "A": "Upgrade a <c=abf5ff>Potion</c> from anywhere to Side A.",
+                "B": "Upgrade a <c=abf5ff>Potion</c> from anywhere to Side B."
             }
         },
         "ChillingStrike": {
@@ -84,8 +84,8 @@
         "Eureka": {
             "name": "Eureka",
             "description": {
-                "None": "Add a new Formulae to Nichole's Recipie Book.",
-                "B": "Add a new Formulae to Nichole's Recipie Book. Draw 3.",
+                "None": "Add a new Formula to Nichole's Recipie Book.",
+                "B": "Add a new Formula to Nichole's Recipie Book. Draw 3.",
                 "A": "Add two new Formulae to Nichole's Recipie Book."
             }
         },
@@ -137,7 +137,7 @@
             }
         },
         "RapidToss": {
-            "name": "RapidToss",
+            "name": "Rapid Toss",
             "description": {
                 "None": "Draw and play all <c=abf5ff>Potions</c> from your deck.",
                 "A": "Draw and play all <c=abf5ff>Potions</c> from your deck.",

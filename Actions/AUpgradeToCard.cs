@@ -9,16 +9,19 @@ namespace JamesBrafin.Nichole.Actions
     internal class AUpgradeToCard : CardAction
     {
         public bool randomUpgrade = false;
-        public Upgrade? upgrade = Upgrade.None;
+        public Upgrade upgrade = Upgrade.None;
         public override Route? BeginWithRoute(G g, State s, Combat c)
         {
             List<int> list = new List<int>();
-            Upgrade randUpgrade;
-            Rand rng = new Rand();
-            int rand = rng.NextInt() % 2;
-            if (rand == 0) { randUpgrade = Upgrade.A; } else { randUpgrade = Upgrade.B; }
-            if (selectedCard != null) {
-                selectedCard.upgrade = randUpgrade;
+            if (randomUpgrade == true)
+            {
+                Rand rng = new Rand();
+                int rand = rng.NextInt() % 2;
+                if (rand == 0) { upgrade = Upgrade.A; } else { upgrade = Upgrade.B; }
+            }
+            
+            if (selectedCard != null ) {
+                selectedCard.upgrade = upgrade;
                 list.Add(selectedCard.uuid);
             }
             

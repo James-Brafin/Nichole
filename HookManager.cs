@@ -32,4 +32,5 @@ public class HookManager<THook> : IEnumerable<THook> where THook : class
 			)
 			.OrderByDescending(e => e.Priority)
 			.Select(e => e.Hook);
+
 }

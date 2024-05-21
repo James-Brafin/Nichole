@@ -18,7 +18,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 Meta = new()
                 {
                     deck = ModEntry.Instance.Nichole_Deck.Deck,
-                    rarity = Rarity.common,
+                    rarity = Rarity.rare,
                     upgradesTo = [Upgrade.A, Upgrade.B]
                 },
                 Name = ModEntry.Instance.AnyLocalizations.Bind(["card", "FlameBlast", "name"]).Localize

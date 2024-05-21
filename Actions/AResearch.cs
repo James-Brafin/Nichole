@@ -12,7 +12,7 @@ namespace JamesBrafin.Nichole.Actions
 {
     public sealed class AResearch : CardAction
     {
-        public bool CanSkip { get; set; } = false;
+        public bool CanSkip { get; set; } = true;
 
         public int amount = 3;
 
@@ -40,7 +40,13 @@ namespace JamesBrafin.Nichole.Actions
             List<Card> randomized = Cards.OrderBy(_ => rng.Next()).ToList();
             ModEntry.Instance.Logger.LogInformation(randomized.Count().ToString());
             List<Card> options = new List<Card>();
-            for (int i = 0; i < amount; i++)
+
+            if(amount > randomized.Count())
+            {
+                amount = randomized.Count();
+            }
+
+            for (int i = 0; i < amount ; i++)
             {
                 options.Add(randomized[i].CopyWithNewId());
             }
