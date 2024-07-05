@@ -34,6 +34,8 @@ public sealed class ModEntry : SimpleMod
     internal ISpriteEntry Nichole_Neutral_0 { get; }
     internal ISpriteEntry Nichole_Mini_0 { get; }
     internal ISpriteEntry Nichole_Squint_0 { get; }
+
+    internal ISpriteEntry Nichole_Gameover_0 { get; }
     internal ISpriteEntry Foresight { get; }
 
     internal static IReadOnlyList<Type> Potion_StartingCards { get; } = [
@@ -254,6 +256,7 @@ public sealed class ModEntry : SimpleMod
         Nichole_Neutral_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/neutral/Nichole_Neutral_0.png"));
         Nichole_Mini_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/Nichole_Mini.png"));
         Nichole_Squint_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/squint/Nichole_Squint_0.png"));
+        Nichole_Gameover_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/squint/Nichole_Scawed_0.png"));
 
         Helper.Content.Characters.RegisterCharacter("Nichole", new CharacterConfiguration()
         {
@@ -318,6 +321,19 @@ public sealed class ModEntry : SimpleMod
                 Nichole_Squint_0.Sprite,
                 Nichole_Squint_0.Sprite,
                 Nichole_Squint_0.Sprite,
+            }
+        });
+
+        Helper.Content.Characters.RegisterCharacterAnimation(new CharacterAnimationConfiguration()
+        {
+            Deck = Nichole_Deck.Deck,
+            LoopTag = "gameover",
+            Frames = new[]
+            {
+                Nichole_Gameover_0.Sprite,
+                Nichole_Gameover_0.Sprite,
+                Nichole_Gameover_0.Sprite,
+                Nichole_Gameover_0.Sprite,
             }
         });
 
