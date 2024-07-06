@@ -108,14 +108,17 @@ public sealed class ModEntry : SimpleMod
 
     internal static IReadOnlyList<Type> Nichole_CommonArtifact_Types { get; } = [
         typeof(RecipieBook),
-        typeof(PotionBelt),
-        typeof(ElixirPoppers)
+        typeof(LiquidExtender),
+        typeof(ExtraHands),
+        typeof(FrostRay),
+        typeof(PlasmaRay),
+        typeof(AlchemicalEngine)
     ];
 
     internal static IReadOnlyList<Type> Nichole_BossArtifact_Types { get; } = [
-        typeof(LiquidExtender),
-        typeof(ExtraHands),
-        typeof(AlchemicalEngine)
+        typeof(LeadtoGold),
+        typeof(PotionBelt),
+        typeof(ElixirPoppers)
     ];
     internal static IEnumerable<Type> Nichole_AllArtifact_Types
         => Nichole_CommonArtifact_Types
