@@ -80,7 +80,7 @@ internal sealed class FreezerBomb : Card, PotionCard
                     {
                         status = ModEntry.Instance.Cryo.Status,
                         statusAmount = 2,
-                        targetPlayer = true
+                        targetPlayer = false
                     }
                 };
                 actions = cardActionList3;
