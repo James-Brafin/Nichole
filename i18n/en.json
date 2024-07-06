@@ -101,8 +101,8 @@
         "InfusedReagents": {
             "name": "Infused Reagents",
             "description": {
-                "None": "Add a random <c=abf5ff>Potion</c> to your hand. Gain 1 <c=status>temp shield</c>",
-                "A": "Add a random <c=abf5ff>Potion</c> to your hand. Gain 1 <c=status>shield</c>",
+                "None": "Add a random <c=abf5ff>Potion</c> to your hand. Gain 1 <c=status>temp shield</c>.",
+                "A": "Add a random <c=abf5ff>Potion</c> to your hand. Gain 1 <c=status>shield</c>.",
                 "B": "Add 2 random <c=abf5ff>Potions</c> to your hand. Gain 1 <c=status>temp shield</c>."
             }
         },

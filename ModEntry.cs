@@ -259,7 +259,7 @@ public sealed class ModEntry : SimpleMod
         Nichole_Neutral_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/neutral/Nichole_Neutral_0.png"));
         Nichole_Mini_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/Nichole_Mini.png"));
         Nichole_Squint_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/squint/Nichole_Squint_0.png"));
-        Nichole_Gameover_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/squint/Nichole_Scawed_0.png"));
+        Nichole_Gameover_0 = Helper.Content.Sprites.RegisterSprite(package.PackageRoot.GetRelativeFile("assets/characters/gameover/Nichole_Scawed_0.png"));
 
         Helper.Content.Characters.RegisterCharacter("Nichole", new CharacterConfiguration()
         {
