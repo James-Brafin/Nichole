@@ -47,7 +47,7 @@ internal sealed class SteelshardGrenade : Card, PotionCard
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 3)
+                        damage = GetDmg(s, 2)
                     }
                 };
                 actions = cardActionList1;
@@ -57,7 +57,7 @@ internal sealed class SteelshardGrenade : Card, PotionCard
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 4)
+                        damage = GetDmg(s, 3)
                     }
                 };
                 actions = cardActionList2;

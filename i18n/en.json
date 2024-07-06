@@ -160,7 +160,7 @@
             }
         },
         "SuddenInspiration": {
-            "name": "Sudden Inspiration"
+            "name": "Idea Strike"
         },
         "AcidCoating": {
             "name": "Acid Coating"
@@ -220,7 +220,7 @@
     "status": {
         "Enflame": {
             "name": "Enflame",
-            "description": "At the end of the turn, this ship takes {0} damage, and Enflame decreases by 1."
+            "description": "At the end of the turn, this ship takes damage equal to its total Enflame, ({0}), and Enflame decreases by 1."
         },
         "Cryo": {
             "name": "Cryo",

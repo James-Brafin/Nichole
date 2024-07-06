@@ -35,9 +35,12 @@ namespace JamesBrafin.Nichole.Artifacts
 
         public override void OnEnemyGetHit(State state, Combat combat, Part? part)
         {
-            this.Pulse();
+            if (activated == false)
+            {
+                this.Pulse();
+                combat.QueueImmediate(new AStatus() { status = ModEntry.Instance.Enflame.Status, statusAmount = 1, targetPlayer = false });
+            }
             activated = true;
-            combat.QueueImmediate(new AStatus() { status = ModEntry.Instance.Cryo.Status, statusAmount = 1, targetPlayer = false });
         }
     }
 }

@@ -48,7 +48,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 2),
+                        damage = GetDmg(s, 1),
                         status = Status.boost,
                         statusAmount = 1
                     }
@@ -60,7 +60,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 3),
+                        damage = GetDmg(s, 2),
                         status = Status.boost,
                         statusAmount = 1
                     }
@@ -72,7 +72,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 2),
+                        damage = GetDmg(s, 1),
                         status = Status.boost,
                         statusAmount = 2
                     }

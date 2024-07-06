@@ -31,7 +31,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
             {
                 /* Give your card some meta data, such as giving it an energy cost, making it exhaustable, and more */
                 cost = 1,
-                exhaust = upgrade != Upgrade.A
+                exhaust = true
 
                 /* if we don't set a card specific 'art' here, the game will give it the deck's 'DefaultCardArt' */
             };
@@ -61,7 +61,7 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                 {
                     new AAttack()
                     {
-                        damage = GetDmg(s, 0),
+                        damage = GetDmg(s, 1),
                         status = Status.corrode,
                         statusAmount = 1
                     }

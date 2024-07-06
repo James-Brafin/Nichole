@@ -72,7 +72,6 @@ namespace JamesBrafin.Nichole
         [HarmonyPatch(typeof(Ship), nameof(Ship.OnBeginTurn))]
         public static void HarmonyPostfix_Status_Cleanup_BeforeTurn(Ship __instance, State s, Combat c)
         {
-            ClearStatus(__instance, ModEntry.Instance.Cryo.Status);
             EnflameHandler(__instance, c);
             ClearStatus(__instance, ModEntry.Instance.AcidTip.Status);
             ClearStatus(__instance, ModEntry.Instance.AcidSource.Status);

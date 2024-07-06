@@ -60,13 +60,13 @@ internal sealed class PotionBooster : Card, PotionCard
                     new AStatus()
                     {
                         status = Status.boost,
-                        statusAmount = 2,
+                        statusAmount = 1,
                         targetPlayer = true,
                     },
 
                     new ADrawCard()
                     {
-                        count = 1
+                        count = 2
                     }
                 };
                 actions = cardActionList2;
