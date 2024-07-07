@@ -45,7 +45,7 @@ namespace JamesBrafin.Nichole.Actions
                     return c;
                 }).ToList(),
                 canSkip = CanSkip,
-                Destination = CardDestination.Hand
+                Destination = Destination
             };
         }
 
@@ -56,7 +56,7 @@ namespace JamesBrafin.Nichole.Actions
 
         private static void CardReward_TakeCard_Postfix(CardReward __instance, G g, Card card)
         {
-            if (__instance is not CustomCardReward custom)
+            if (__instance is not CustomCardReward)
                 return;
             if (g.state.route is not Combat combat)
                 return;
@@ -65,7 +65,7 @@ namespace JamesBrafin.Nichole.Actions
             combat.QueueImmediate(new AAddCard
             {
                 card = card,
-                destination = CardDestination.Hand
+                destination = ((CustomCardReward)__instance).Destination
             });
         }
 

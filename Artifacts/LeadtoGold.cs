@@ -29,7 +29,7 @@ namespace JamesBrafin.Nichole.Artifacts
         public override void OnCombatStart(State state, Combat combat)
         {
             combat.QueueImmediate(
-                new AStatus() { status = Status.perfectShield, statusAmount = 1, targetPlayer = true }
+                new AStatus() { status = Status.perfectShield, statusAmount = 2, targetPlayer = true }
                 );
             combat.QueueImmediate(new AStatus() { status = Status.drawLessNextTurn, statusAmount = 1, targetPlayer = true });
         }

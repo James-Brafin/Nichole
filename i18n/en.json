@@ -228,11 +228,11 @@
         },
         "AcidTip": {
             "name": "Acid Tip",
-            "description": "Your next attack applies {0} corrosion to the target."
+            "description": "Your next attack applies {0} corrosion to the target. Is removed at end of turn."
         },
         "AcidSource": {
             "name": "Acid Source",
-            "description": "Each attack for the rest of the turn deals {0} corrosion to the target."
+            "description": "Each attack for the rest of the turn deals {0} corrosion to the target. Is removed at end of turn."
         },
         "SuperStun": {
             "name": "Super Stun",

@@ -57,7 +57,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     new ASpecificRandCardOffering()
                     {
                         Cards = recipieBook.learnedPotions,
-                        amount = 3
+                        amount = 3,
+                        Destination = CardDestination.Deck
                     }
                 };
                             actions = cardActionList1;
@@ -68,7 +69,8 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     new ASpecificRandCardOffering()
                     {
                         Cards = recipieBook.learnedPotions,
-                        amount = 3
+                        amount = 3,
+                        Destination = CardDestination.Deck
                     }
                 };
                             actions = cardActionList2;
@@ -79,16 +81,19 @@ namespace JamesBrafin.Nichole.Cards.Nichole
                     new ASpecificRandCardOffering()
                     {
                         Cards = recipieBook.learnedPotions,
-                        amount = 3
+                        amount = 3,
+                        Destination = CardDestination.Deck
                     },
                     new ASpecificRandCardOffering()
                     {
                         Cards = recipieBook.learnedPotions,
-                        amount = 3
+                        amount = 3,
+                        Destination = CardDestination.Deck
                     }
                 };
                             actions = cardActionList3;
                             break;
+
                     }
                 }
             }

@@ -38,7 +38,7 @@ namespace JamesBrafin.Nichole.Artifacts
             if (activated == false)
             {
                 this.Pulse();
-                combat.QueueImmediate(new AStatus() { status = ModEntry.Instance.Enflame.Status, statusAmount = 1, targetPlayer = false });
+                combat.QueueImmediate(new AStatus() { status = ModEntry.Instance.Cryo.Status, statusAmount = 1, targetPlayer = false });
             }
             activated = true;
         }

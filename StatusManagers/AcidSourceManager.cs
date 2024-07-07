@@ -10,10 +10,11 @@ namespace JamesBrafin.Nichole
     {
         public AcidSourceManager()
         {
-            Status status = ModEntry.Instance.AcidSource.Status;
+            
             ModEntry.Instance.Helper.Events.RegisterAfterArtifactsHook(nameof(Artifact.OnPlayerTakeNormalDamage), (State state, Combat combat, Part? part) =>
             {
-                if (part is null || combat.otherShip.Get(status) <= 0)
+                Status status = ModEntry.Instance.AcidSource.Status;
+                if (combat.otherShip.Get(status) <= 0)
                     return;
 
                 combat.QueueImmediate(new AStatus()
@@ -27,7 +28,8 @@ namespace JamesBrafin.Nichole
 
             ModEntry.Instance.Helper.Events.RegisterAfterArtifactsHook(nameof(Artifact.OnEnemyGetHit), (State state, Combat combat, Part? part) =>
             {
-                if (part is null || state.ship.Get(status) <= 0)
+                Status status = ModEntry.Instance.AcidSource.Status;
+                if (state.ship.Get(status) <= 0)
                     return;
 
                 combat.QueueImmediate(new AStatus()
