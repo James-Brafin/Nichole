@@ -15,8 +15,7 @@ namespace JamesBrafin.Nichole.Actions
             List<int> list = new List<int>();
             if (randomUpgrade == true)
             {
-                Rand rng = new Rand();
-                int rand = rng.NextInt() % 2;
+                int rand = (int)s.rngActions.NextInt() % 2;
                 if (rand == 0) { upgrade = Upgrade.A; } else { upgrade = Upgrade.B; }
             }
             
